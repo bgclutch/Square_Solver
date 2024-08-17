@@ -6,6 +6,7 @@
 #define NEG_COMPARER -0.0001
 
 bool compare_to_zero(double comparable);
+bool for_discriminant_compare_to_zero(double comparable);
 
 int main(void)
 {
@@ -25,17 +26,19 @@ int main(void)
     scanf("%lf %lf %lf", &sqr_x_coefficient, &x_coefficient, &free_coefficient );  //считывание коэффициентов
 
 
+
+
+
+
     if(compare_to_zero(sqr_x_coefficient))
     {
-        root_counter = 2;
+        root_counter = -1;
         printf("Ваше уравнение: %.3lfx^2%+.3lfx%+.3lf\n\n", sqr_x_coefficient, x_coefficient, free_coefficient);  //вывод квадратного уравнения
-        printf("Количество корней уравнения %d\n", root_counter);
     }
     else if(compare_to_zero(x_coefficient))
     {
         root_counter = 1;
         printf("Ваше уравнение: %.3lfx%+.3lf\n\n", x_coefficient, free_coefficient);  //вывод линейного уравнения
-        printf("Количество корней уравнения %d\n", root_counter);
     }
     else
     {
@@ -44,39 +47,64 @@ int main(void)
     }
 
 
-    if(root_counter == 2)                                                      //рассчетный блок
+
+
+
+
+    if(root_counter == -1)                                                      //рассчетный блок
     {
         discriminant = x_coefficient*x_coefficient - 4 * sqr_x_coefficient * free_coefficient;
-        if(compare_to_zero(discriminant))
+        if(!for_discriminant_compare_to_zero(discriminant))         //проверка неотрицательности дискриминанта
         {
-            root_1 = (-x_coefficient - sqrt(discriminant)) / (2 * sqr_x_coefficient);
-            root_2 = (-x_coefficient + sqrt(discriminant)) / (2 * sqr_x_coefficient);
+            if(compare_to_zero(discriminant))                      //проверка дискриминанта на "0"
+            {
+                root_counter = 2;
+                root_1 = (-x_coefficient - sqrt(discriminant)) / (2 * sqr_x_coefficient);      //выполняется при дискриминанте > 0
+                root_2 = (-x_coefficient + sqrt(discriminant)) / (2 * sqr_x_coefficient);
+                printf("Количество корней уравнения %d\n", root_counter);
+            }
+            else
+            {
+                root_counter = 1;                                                     //выполняется при дискрминанте == 0
+                root_1 = -x_coefficient / (2 * sqr_x_coefficient);
+                printf("Количество корней уравнения %d\n", root_counter);
+            }
         }
-        else
+        else                                                             //выполняется при дискриминанте < 0
         {
             printf("Дискриминант меньше нуля(\n");
             return 0;
         }
     }
-    else
+    else                                                                    //переход к линейному уравнению
+    {
         root_1 = -free_coefficient / x_coefficient;
+    }
+
 
 
 
 
 
     if(root_counter == 2)
-        printf("Корни квадратного уравнения: x_1 = %.3lf, x_2 = %.3lf\n", root_1, root_2);  //вывод решения квадратного уравнения
+        printf("Корни уравнения: x_1 = %.3lf, x_2 = %.3lf\n", root_1, root_2);  //вывод решения квадратного уравнения
     else
     {
-        printf("Корень линейного уравнения = %.3lf\n", root_1);      //вывод решения линейного уравнения
+        printf("Корень уравнения x = %.3lf\n", root_1);      //вывод решения линейного уравнения или квадратного уравнения с одним корнем
     }
 
     return 0;
 }
 
 
- bool compare_to_zero(double comparable)
- {
+
+
+bool compare_to_zero(double comparable)
+{
     return (comparable > POS_COMPARER || comparable < NEG_COMPARER);
- }
+}
+
+bool for_discriminant_compare_to_zero(double comparable)
+{
+    return (comparable < NEG_COMPARER);
+}

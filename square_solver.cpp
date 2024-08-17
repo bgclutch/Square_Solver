@@ -1,75 +1,59 @@
 #include <TXLiB.h>
 
-
-double finder_Discriminant(double sqr_x, double x, double free_coef);      //РѕР±СЉСЏРІР»РµРЅРёРµ С„СѓРЅРєС†РёР№
-//double changer_Coefficient();
-double finder_Root_bigger(double discr, double x_coef, double sqr_coef);
-double finder_Root_smaller(double discr, double x_coef, double sqr_coef);
-bool checker_Discriminant(double discrimiant);
-//bool checker_Coefficient();
-
-
-
-
 int main(void)
 {
 
-printf("РџСЂРёРІРµС‚, СЏ РїРѕРјРѕРіСѓ СЂРµС€РёС‚СЊ РєРІР°РґСЂР°С‚РЅРѕРµ СѓСЂР°РІРЅРµРЅРёРµ)\n");    //РІС‹РІРѕРґ РїСЂРёРІРµС‚СЃС‚РІРёСЏ РЅР° СЌРєСЂР°РЅ
-//printf("Р’Р«Р±РµСЂРё РѕРґРёРЅ РёР· РІР°СЂРёР°РЅС‚РѕРІ:\n");
-printf("Р’РІРµРґРё РєРѕСЌС„РёС†РёРµРЅС‚С‹ С‡РµСЂРµР· РїСЂРѕР±РµР»:\n");
-                                                      //РІС‹РІРѕРґ РїСЂРѕСЃСЊР±С‹ РІРІРµСЃС‚Рё РєРѕСЌС„С„РёС†РёРµРЅС‚С‹
-double sqr_x_coefficient = 0.0;                       //РѕР±СЉСЏРІР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅС‹СЉ
+printf("Привет, я помогу решить квадратное уравнение)\n");  //вывод приветствия
+printf("_x^2 + _x + _\n\n");
+printf("Введи 3 коэффициента через пробел:\n");      //вывод просьбы ввести коэффициенты
+
+double sqr_x_coefficient = 0.0;         //объявление переменных
 double x_coefficient = 0.0;
 double free_coefficient = 0.0;
 double discriminant = 0.0;
+double root_1 = 0.0;
+double root_2 = 0.0;
+bool sqr_x_coef_exists = true;
 
-scanf("%lf %lf %lf", &sqr_x_coefficient, &x_coefficient, &free_coefficient );  //СЃС‡РёС‚С‹РІР°РЅРёРµ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ
-
-printf("Р’Р°С€Рµ СѓСЂР°РІРЅРµРЅРёРµ: %.3lfx^2%+.3lfx%+.3lf\n\n", sqr_x_coefficient, x_coefficient, free_coefficient);  //РІС‹РІРѕРґ СѓСЂР°РІРЅРµРЅРёСЏ РЅР° СЌРєСЂР°РЅ
-
-
-discriminant = finder_Discriminant(sqr_x_coefficient, x_coefficient, free_coefficient);     //РЅР°С…РѕР¶РґРµРЅРёРµ РґРёСЃРєСЂРёРјРёРЅР°РЅС‚Р°
+scanf("%lf %lf %lf", &sqr_x_coefficient, &x_coefficient, &free_coefficient );  //считывание коэффициентов
 
 
-if(checker_Discriminant(discriminant))    //РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р° РЅР° СЌРєСЂР°РЅ
+if(fabs(sqr_x_coefficient-0) > 0.0001)
 {
-    printf("РљРѕСЂРЅРё СѓСЂР°РІРЅРµРЅРёСЏ: X_1 = %.3lf, X_2 = %.3lf", finder_Root_bigger(discriminant,-x_coefficient, sqr_x_coefficient), finder_Root_smaller(discriminant,-x_coefficient, sqr_x_coefficient));
-
+    discriminant = pow(x_coefficient, 2) - 4 * sqr_x_coefficient * free_coefficient;     //нахождение дискриминанта
+    printf("Ваше уравнение: %.3lfx^2%+.3lfx%+.3lf\n\n", sqr_x_coefficient, x_coefficient, free_coefficient);  //вывод квадратного уравнения
+    printf("Ваш дискриминант равен %.3lf\n", discriminant);
+}
+else if(fabs(x_coefficient-0) > 0.0001)
+{
+    printf("Ваше уравнение: %.3lfx%+.3lf\n\n", x_coefficient, free_coefficient);  //вывод линейного уравнения
+    sqr_x_coef_exists = false;
 }
 else
 {
-    printf("Р”РёСЃРєСЂРёРјРёРЅР°РЅС‚ РјРµРЅСЊС€Рµ РЅСѓР»СЏ(");
+    printf("Введеные коэффициенты не могут образовать уравнение(");
+    return 0;
+}
+
+
+
+if(sqr_x_coef_exists && discriminant >= 0)
+{
+    root_1 = (-x_coefficient - sqrt(discriminant)) / (2 * sqr_x_coefficient);
+    root_2 = (-x_coefficient + sqrt(discriminant)) / (2 * sqr_x_coefficient);
+    printf("Корни квадратного уравнения: x_1 = %.3lf, x_2 = %.3lf", root_1, root_2);  //вывод решения квадратного уравнения
+
+}
+else if(sqr_x_coef_exists && discriminant < 0)
+{
+    printf("Дискриминант меньше нуля(");
+}
+else
+{
+    root_1 = -free_coefficient / x_coefficient;
+    printf("Корень линейного уравнения = %.3lf", root_1);      //вывод решения линейного уравнения
 }
 
 
 return 0;
 }
-
-
-
-
-double finder_Discriminant(double sqr_x, double x, double free_coef)    //  РЅР°С…РѕР¶РґРµРЅРёСЏ РґРёСЃРєСЂРёРјРёРЅР°РЅС‚Р°
-{
-    return pow(x ,2) - 4 * sqr_x * free_coef;
-}
-
-
-//double changer_Coefficient();
-
-
-double finder_Root_bigger(double discr, double x_coef, double sqr_coef)  //  РЅР°С…РѕР¶РґРµРЅРёРµ Р±РѕР»СЊС€РµРіРѕ РєРѕСЂРЅСЏ СѓСЂР°РІРЅРµРЅРёСЏ
-{
-    return (x_coef+sqrt(discr))/(2*sqr_coef);
-}
-
-double finder_Root_smaller(double discr, double x_coef, double sqr_coef) //  РЅР°С…РѕР¶РґРµРЅРёРµ РјРµРЅСЊС€РµРіРѕ РєРѕСЂРЅСЏ СѓСЂР°РІРЅРµРЅРёСЏ
-{
-    return (x_coef-sqrt(discr))/(2*sqr_coef);
-}
-
-
-bool checker_Discriminant(double discr){           //РїСЂРѕРІРµСЂРєР° РґРёСЃРєСЂРёРјРёРЅР°РЅС‚Р° РЅР° РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕСЃС‚СЊ
-   return discr >= 0;
-}
-
-//bool checker_Coefficient();

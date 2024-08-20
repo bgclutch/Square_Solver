@@ -2,11 +2,23 @@
 #include <stdio.h>
 #include <math.h>
 
-#define POS_COMPARER 0.0001
-#define NEG_COMPARER -0.0001
 
-bool compare_to_zero(double comparable);
-bool for_discriminant_compare_to_zero(double comparable);
+
+enum constants
+{
+    epsilon = 0.0001,
+    two_roots = 2,
+    unexisting_roots = 0,
+    one_root = 1,
+    inf_roots = 3
+};
+
+
+
+bool pos_compare_to_zero(double comparable);
+bool neg_compare_to_zero(double comparable);
+int roots_counter(double sqr_x_coef, double x_coef, double free_coef);
+int print_equation(int root_number, double sqr_x_coef, double x_coef, double free_coef);
 
 int main(void)
 {
@@ -21,42 +33,21 @@ int main(void)
     double discriminant = 0.0;
     double root_1 = 0.0;
     double root_2 = 0.0;
-    int root_counter = 0;
+    int root_number = 0;
 
-    scanf("%lf %lf %lf", &sqr_x_coefficient, &x_coefficient, &free_coefficient );  //считывание коэффициентов
-
-
+    scanf("%lg %lg %lg", &sqr_x_coefficient, &x_coefficient, &free_coefficient );  //считывание коэффициентов
 
 
+    root_number = roots_counter(sqr_x_coefficient, x_coefficient, free_coefficient);
 
+    print_equation(root_number, sqr_x_coefficient, x_coefficient, free_coefficient);
 
-    if(compare_to_zero(sqr_x_coefficient))
-    {
-        root_counter = -1;
-        printf("¬аше уравнение: %.3lfx^2%+.3lfx%+.3lf\n\n", sqr_x_coefficient, x_coefficient, free_coefficient);  //вывод квадратного уравнени€
-    }
-    else if(compare_to_zero(x_coefficient))
-    {
-        root_counter = 1;
-        printf("¬аше уравнение: %.3lfx%+.3lf\n\n", x_coefficient, free_coefficient);  //вывод линейного уравнени€
-    }
-    else
-    {
-        printf("¬веденые коэффициенты не могут образовать уравнение(\n");
-        return 0;
-    }
-
-
-
-
-
-
-    if(root_counter == -1)                                                      //рассчетный блок
+   /* if(root_number == )                                                      //рассчетный блок
     {
         discriminant = x_coefficient*x_coefficient - 4 * sqr_x_coefficient * free_coefficient;
-        if(!for_discriminant_compare_to_zero(discriminant))         //проверка неотрицательности дискриминанта
+        if(!neg_compare_to_zero(discriminant))         //проверка неотрицательности дискриминанта
         {
-            if(compare_to_zero(discriminant))                      //проверка дискриминанта на "0"
+            if(pos_compare_to_zero(discriminant))                      //проверка дискриминанта на "0"
             {
                 root_counter = 2;
                 root_1 = (-x_coefficient - sqrt(discriminant)) / (2 * sqr_x_coefficient);      //выполн€етс€ при дискриминанте > 0
@@ -72,39 +63,99 @@ int main(void)
         }
         else                                                             //выполн€етс€ при дискриминанте < 0
         {
-            printf("ƒискриминант меньше нул€(\n");
+            printf("ƒискриминант меньше нул€, x любое\n");
             return 0;
         }
     }
     else                                                                    //переход к линейному уравнению
     {
         root_1 = -free_coefficient / x_coefficient;
-    }
-
-
-
-
+    }  */
 
 
     if(root_counter == 2)
-        printf(" орни уравнени€: x_1 = %.3lf, x_2 = %.3lf\n", root_1, root_2);  //вывод решени€ квадратного уравнени€
+        printf(" орни уравнени€: x_1 = %.3lg, x_2 = %.3lg\n", root_1, root_2);  //вывод решени€ квадратного уравнени€
     else
     {
-        printf(" орень уравнени€ x = %.3lf\n", root_1);      //вывод решени€ линейного уравнени€ или квадратного уравнени€ с одним корнем
+        printf(" орень уравнени€ x = %.3lg\n", root_1);      //вывод решени€ линейного уравнени€ или квадратного уравнени€ с одним корнем
     }
 
-    return 0;
+    return;
 }
-
-
 
 
 bool compare_to_zero(double comparable)
 {
-    return (comparable > POS_COMPARER || comparable < NEG_COMPARER);
+    return (fabs(comparable) > POS_EPSILON);
 }
 
-bool for_discriminant_compare_to_zero(double comparable)
+int roots_counter(double sqr_x_coef, double x_coef, double free_coef)
 {
-    return (comparable < NEG_COMPARER);
+    if(compare_to_zero(sqr_x_coef))
+    {
+        return -1;
+    }
+    else if(compare_to_zero(x_coef)){
+        return 1;
+    }
+    else
+    {
+        return (compare_to_zero(free_coef))? INF_ROOTS: NO_ROOTS;
+    }
+}
+
+int print_equation(int root_number, double sqr_x_coef, double x_coef, double free_coef)
+{
+    switch(root_number)
+    {
+        case UNEXISTING_ROOTS:
+        {
+             printf("”равнение %lgx^2 %+lgx %+lg не имеет корней\n\n", sqr_x_coef, x_coef, free_coef);
+        }
+        case INF_ROOTS:
+        {
+            printf("”равнение %lgx^2 %+lgx %+lg имеет бесконечное количество корней\n\n", sqr_x_coef, x_coef, free_coef);
+        }
+        case ONE_ROOT:
+        {
+            printf("”равнение %lgx %+lg имеет один корень\n\n", x_coef, free_coef);
+        }
+        case TWO_ROOTS:
+        {
+            printf("”равнение %lgx^2 %+lgx %+lg имеет два корн€\n\n", sqr_x_coef, x_coef, free_coef);
+        }
+        default:
+        {
+            printf("Ќет данных\n\n");
+            return 0;
+        }
+    }
+}
+
+int root_finder(int root_num, double sqr_x_coef, double x_coef, double free_coef, double *discr, double *root_1, double *root_2)
+{     if(root_num == two_roots)
+      {
+        discr = x_coef*x_coef - 4 * sqr_x_coef * free_coef;
+        if(!compare_to_zero(discr))
+        {
+            if(compare_to_zero(discr))
+            {
+                *root_1 = -x_coef/ (2 * sqr_x_coef);
+            }
+            else
+            {
+                *root_1 = (-x_coef - sqrt(discr)) / (2 * sqr_x_coef);
+                *root_2 = (-x_coef + sqrt(discr)) / (2 * sqr_x_coef);
+            }
+        }
+        else
+        {
+            printf("ƒискриминант меньше нул€, x любое\n");
+            return 0;
+        }
+    }
+    else
+    {
+        *root_1 = -free_coef / x_coef;
+    }
 }

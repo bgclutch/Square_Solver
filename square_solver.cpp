@@ -14,7 +14,6 @@ enum Constant
 };
 
 
-
 bool compare_to_zero(double comparable);
 
 int roots_counter(double sqr_x_coef, double x_coef, double free_coef);
@@ -25,7 +24,6 @@ void result_print(int root_counter, double root_1, double root_2, double discr);
 
 void root_finder(int *root_num, double sqr_x_coef, double x_coef, double free_coef,
  double *discr, double *root_1, double *root_2);
-
 
 
 int main(void)
@@ -39,7 +37,8 @@ int main(void)
     double x_coefficient = 0.0;
     double free_coefficient = 0.0;
 
-    scanf("%lg %lg %lg", &sqr_x_coefficient, &x_coefficient, &free_coefficient );  //считывание коэффициентов
+    while (scanf("%lg %lg %lg", &sqr_x_coefficient, &x_coefficient, &free_coefficient) == 3)  //считывание коэффициентов
+    {
 
     int root_number = 0;
 
@@ -56,6 +55,11 @@ int main(void)
 
     result_print(root_number, root_1, root_2, discriminant);                 //вывод ответа
 
+    printf("Введи 3 коэффициента через пробел:\n\n");
+    printf("_x^2 + _x + _\n\n");
+    printf("Или введи любой нечисловой символ для окончания работы\n\n");
+    }
+    printf("Спасибо за работу!\n\n");
     return 0;
 }
 
@@ -64,6 +68,7 @@ bool compare_to_zero(double comparable)
 {
     return (fabs(comparable) > EPSILON);
 }
+
 
 int roots_counter(double sqr_x_coef, double x_coef, double free_coef)
 {
@@ -80,10 +85,12 @@ int roots_counter(double sqr_x_coef, double x_coef, double free_coef)
     }
 }
 
+
 void equation_print(int root_number, double sqr_x_coef, double x_coef, double free_coef)
 {
     printf("\nКоличество корней уравнения %lgx^2%+lgx%+lg = %d \n\n", sqr_x_coef, x_coef, free_coef, root_number);
 }
+
 
 void root_finder(int *root_num, double sqr_x_coef, double x_coef, double free_coef, double *discr, double *root_1, double *root_2)
 {
@@ -111,17 +118,18 @@ void root_finder(int *root_num, double sqr_x_coef, double x_coef, double free_co
     }
 }
 
+
 void result_print(int root_counter, double root_1, double root_2, double discr)
 {
     printf("Дискриминант = %lg\n\n",discr);
     if(root_counter == TWO_ROOTS)
-        printf("Корни уравнения: x_1 = %.3lg, x_2 = %.3lg\n", root_1, root_2);
+        printf("Корни уравнения: x_1 = %.3lg, x_2 = %.3lg\n\n", root_1, root_2);
     else if(root_counter == ONE_ROOT)
     {
-        printf("Корень уравнения x = %.3lg\n", root_1);
+        printf("Корень уравнения x = %.3lg\n\n", root_1);
     }
     else
     {
-        printf("Нет корней\n");
+        printf("Нет корней\n\n");
     }
 }

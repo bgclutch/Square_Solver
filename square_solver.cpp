@@ -10,10 +10,10 @@ enum NumRoots
     UNEXISTING_ROOTS = 0,
     ONE_ROOT         = 1,
     TWO_ROOTS        = 2,
-    INF_ROOTS        = 3
+    INF_ROOTS        = 3,
 };
 
-struct for_tests
+struct Unit_Test_Data
 {
     int test_num;
     double sqr_x_coef;
@@ -25,14 +25,14 @@ struct for_tests
     int root_num_exp;
 };
 
-struct for_equation
+struct Equation_Coefficients_Data
 {
     double sqr_x_coef;
     double x_coef;
     double free_coef;
 };
 
-struct for_changing
+struct Equation_Attributes_Data
 {
     double discr;
     double root_1;
@@ -44,71 +44,65 @@ struct for_changing
 
 bool is_zero(const double comparable);
 
-void equation_print(const for_equation coefficients, const for_changing equation_parts);
+void equation_print(const Equation_Coefficients_Data coefficients, const Equation_Attributes_Data equation_parts);
 
-void result_print (for_changing equation_parts);
+void result_print (Equation_Attributes_Data equation_parts);
 
-void root_finder(const for_equation coefficients, for_changing *equation_parts);
+void square_equ_solver(const Equation_Coefficients_Data coefficients, Equation_Attributes_Data *equation_parts);
 
 void greetings();
 
-void lineal_equ_solver(const double free_coef, const double x_coef, double *root_1);
+void lineal_equ_solver(const double free_coef, const double x_coef, double *root_1, Equation_Attributes_Data *equation_parts);
 
 double fix_root_minus_zero(double root);
 
-int read_nums(for_equation *coefficients);
+int read_nums(Equation_Coefficients_Data *coefficients);
 
 bool buff_clean_and_check();
 
 int for_input(double *coef, int counter);
 
-int Solving_Tests(for_tests test);
+bool continue_or_finish();
+
+int Solving_Tests(Unit_Test_Data test);
 
 void Unit_Tests();
+
+void is_min(double *root_1, double *root_2);
 
 
 int main(void)
 {
 
+    //Unit_Tests();
+
     greetings(); //вывод просьбы ввести коэффициенты
 
-    struct for_equation coefficients =
+    struct Equation_Coefficients_Data coefficients =
         {
           .sqr_x_coef = NAN,
           .x_coef = NAN,
           .free_coef = NAN
         };
-    //double sqr_x_coefficient = NAN;         //объявление переменных
-    //double x_coefficient = NAN;
-    //double free_coefficient = NAN;
 
     while (read_nums(&coefficients) == 3)  //считывание коэффициентов
     {
 
-    struct for_changing equation_parts =
-        {
-          .discr = NAN,
-          .root_1 = NAN,
-          .root_2 = NAN,
-          .root_number = UNEXISTING_ROOTS
-        };
+        struct Equation_Attributes_Data equation_parts =
+            {
+              .discr = NAN,
+              .root_1 = NAN,
+              .root_2 = NAN,
+              .root_number = UNEXISTING_ROOTS
+            };
 
-        //double discriminant = NAN;
-        //double root_1 = NAN;
-        //double root_2 = NAN;
-        //NumRoots root_number = UNEXISTING_ROOTS;
-
-        root_finder(coefficients, &equation_parts);
+        square_equ_solver(coefficients, &equation_parts);
 
         equation_print(coefficients, equation_parts);   //вывод уравнения
 
         result_print(equation_parts);                 //вывод ответа
-
-
-        //Unit_Tests();
-
-
     }
+
     printf("Спасибо за работу!\n\n");
     return 0;
 }
@@ -120,7 +114,7 @@ bool is_zero(const double comparable)
 }
 
 
-void equation_print(const for_equation coefficients, const for_changing equation_parts) //switch
+void equation_print(const Equation_Coefficients_Data coefficients, const Equation_Attributes_Data equation_parts) //switch
 {
     switch(equation_parts.root_number)
     {
@@ -153,7 +147,7 @@ void equation_print(const for_equation coefficients, const for_changing equation
 }
 
 
-void root_finder(const for_equation coefficients, for_changing *equation_parts)
+void square_equ_solver(const Equation_Coefficients_Data coefficients, Equation_Attributes_Data *equation_parts)
 {
     assert((&(*equation_parts).root_number) && "&root_num is 0");
     assert((&(*equation_parts).discr) && "&discr is 0");
@@ -174,35 +168,28 @@ void root_finder(const for_equation coefficients, for_changing *equation_parts)
             else if(equation_parts->discr > EPSILON)
             {
                 assert(equation_parts->discr > EPSILON && "discr is negative");//discr
-                (*equation_parts).root_1 = (-(coefficients.x_coef) - sqrt(equation_parts->discr)) / (2 * coefficients.sqr_x_coef);
-                (*equation_parts).root_2 = (-(coefficients.x_coef) + sqrt(equation_parts->discr)) / (2 * coefficients.sqr_x_coef);
-                (*equation_parts).root_number = TWO_ROOTS;
+                equation_parts->root_1 = (-(coefficients.x_coef) - sqrt(equation_parts->discr)) / (2 * coefficients.sqr_x_coef);
+                equation_parts->root_2 = (-(coefficients.x_coef) + sqrt(equation_parts->discr)) / (2 * coefficients.sqr_x_coef);
+                is_min(&(equation_parts->root_1), &(equation_parts->root_2));
+                equation_parts->root_number = TWO_ROOTS;
             }
             else
             {
-                (*equation_parts).root_number = UNEXISTING_ROOTS;
-                (*equation_parts).root_1 = NAN;
-                (*equation_parts).root_2 = NAN;
+                equation_parts->root_number = UNEXISTING_ROOTS;
             }
         }
         else if(is_zero(coefficients.x_coef))
         {
-            lineal_equ_solver(coefficients.free_coef, coefficients.x_coef, &(equation_parts->root_1));
-            equation_parts->root_2 = NAN;
-            equation_parts->root_number = ONE_ROOT;
-            equation_parts->discr = coefficients.x_coef * coefficients.x_coef - 4 * coefficients.sqr_x_coef * coefficients.free_coef;
+            lineal_equ_solver(coefficients.free_coef, coefficients.x_coef, &(equation_parts->root_1), equation_parts);
         }
         else
         {
-            (*equation_parts).root_number = (is_zero(coefficients.free_coef)) ? UNEXISTING_ROOTS : INF_ROOTS;
-            (*equation_parts).discr = coefficients.x_coef * coefficients.x_coef - 4 * coefficients.sqr_x_coef * coefficients.free_coef;
-            (*equation_parts).root_1 = NAN;
-            (*equation_parts).root_2 = NAN;
+            equation_parts->root_number = (is_zero(coefficients.free_coef)) ? UNEXISTING_ROOTS : INF_ROOTS;
         }
 }
 
 
-void result_print(const for_changing equation_parts)
+void result_print(const Equation_Attributes_Data equation_parts)
 {
     switch(equation_parts.root_number)
     {
@@ -210,7 +197,8 @@ void result_print(const for_changing equation_parts)
         {
             assert(!isnan(equation_parts.root_1) && "root_1 is NAN");
             assert(!isnan(equation_parts.root_2) && "root_2 is NAN");
-            printf("Корни уравнения: x_1 = %.3lg, x_2 = %.3lg\n\n", fix_root_minus_zero(equation_parts.root_1), fix_root_minus_zero(equation_parts.root_2));
+            printf("Корни уравнения: x_1 = %.3lg, x_2 = %.3lg\n\n", fix_root_minus_zero(equation_parts.root_1),
+                   fix_root_minus_zero(equation_parts.root_2));
             break;
         }
         case(ONE_ROOT):
@@ -235,6 +223,7 @@ void result_print(const for_changing equation_parts)
             break;
         }
     }
+    continue_or_finish();
 }
 
 //assert(0 && "Abx")
@@ -247,11 +236,12 @@ void greetings()
 }
 
 
-void lineal_equ_solver(const double free_coef, const double x_coef, double *root_1)
+void lineal_equ_solver(const double free_coef, const double x_coef, double *root_1, Equation_Attributes_Data *equation_parts)
 {
     assert(root_1 && "&root_1 is 0");
     assert(isnan(*root_1) && "root_1 is not NAN");
     *root_1 = -free_coef / x_coef;
+    equation_parts->root_number = ONE_ROOT;
 }
 
 
@@ -265,7 +255,7 @@ double fix_root_minus_zero(double root)
     return !is_zero(root) ?  0 : root;
 }
 
-int read_nums(for_equation *coefficients)
+int read_nums(Equation_Coefficients_Data *coefficients)
 {
     int result = 0;
     result += for_input(&(coefficients->sqr_x_coef), result);
@@ -308,23 +298,24 @@ int for_input(double *coef, int counter)
 
 
 
-int Solving_Tests(for_tests test)
+int Solving_Tests(Unit_Test_Data test)
 {
-    struct for_equation coefficients =
+    struct Equation_Coefficients_Data coefficients =
         {
           .sqr_x_coef = test.sqr_x_coef,
           .x_coef = test.x_coef,
           .free_coef = test.free_coef
         };
 
-    struct for_changing equation_parts =
-    {
-      .discr = NAN,
-      .root_1 = NAN,
-      .root_2 = NAN,
-      .root_number = UNEXISTING_ROOTS
-    };
-    root_finder(coefficients, &equation_parts);
+    struct Equation_Attributes_Data equation_parts =
+        {
+          .discr = NAN,
+          .root_1 = NAN,
+          .root_2 = NAN,
+          .root_number = UNEXISTING_ROOTS
+        };
+
+    square_equ_solver(coefficients, &equation_parts);
 
     if(test.root_num_exp != equation_parts.root_number || fabs(equation_parts.discr - test.discr_exp) > EPSILON || (equation_parts.root_1 - test.root_1_exp) > EPSILON ||
       (equation_parts.root_2 - test.root_2_exp) > EPSILON)
@@ -347,73 +338,72 @@ int Solving_Tests(for_tests test)
 
 void Unit_Tests()
 {
-    struct for_tests test_1 = {.test_num = 1, .sqr_x_coef = 0, .x_coef = 0, .free_coef = 0, .discr_exp = 0, .root_1_exp = NAN,
-                               .root_2_exp = NAN, .root_num_exp = 0};
-
-    struct for_tests test_2 = {.test_num = 2, .sqr_x_coef = 0, .x_coef = 0, .free_coef = 3, .discr_exp = 0 , .root_1_exp = INF_ROOTS,
-                               .root_2_exp = INF_ROOTS, .root_num_exp = UNEXISTING_ROOTS};
-
-    struct for_tests test_3 = {.test_num = 3, .sqr_x_coef = -4, .x_coef = 3, .free_coef = 8, .discr_exp = 137, .root_1_exp = 1.838,
-                               .root_2_exp = -1.088, .root_num_exp = 2};
-
-    struct for_tests test_4 = {.test_num = 4, .sqr_x_coef = 1, .x_coef = 6, .free_coef = 9, .discr_exp = 0, .root_1_exp = -3,
-                               .root_2_exp = NAN, .root_num_exp = 1};
-
-    struct for_tests test_5 = {.test_num = 5, .sqr_x_coef = 1, .x_coef = 0, .free_coef = -16, .discr_exp = 64, .root_1_exp = -4,
-                               .root_2_exp = 4, .root_num_exp = 2};
-
-    struct for_tests test_6 = {.test_num = 6, .sqr_x_coef = 1.674, .x_coef = 673.5, .free_coef = -5, .discr_exp = 453635.73, .root_1_exp = -402.337,
-                               .root_2_exp = 0.007, .root_num_exp = 2};
-
-    struct for_tests test_7 = {.test_num = 7, .sqr_x_coef = 16, .x_coef = 128, .free_coef = -872.7, .discr_exp = 72236.8, .root_1_exp = -12.399,
-                               .root_2_exp = 4.399, .root_num_exp = 2};
-
-    struct for_tests test_8 = {.test_num = 8, .sqr_x_coef = 10, .x_coef = -57, .free_coef = -672, .discr_exp = 30129, .root_1_exp = -5.829,
-                               .root_2_exp = 11.529, .root_num_exp = 2};
-
-    struct for_tests test_9 = {.test_num = 9, .sqr_x_coef = 10, .x_coef = -57, .free_coef = 672, .discr_exp = -23631, .root_1_exp = NAN,
-                               .root_2_exp = NAN, .root_num_exp = 0};
-
-    struct for_tests test_10 = {.test_num = 10, .sqr_x_coef = 0, .x_coef = 5, .free_coef = -45.72, .discr_exp = 25, .root_1_exp = 9.144,
-                                .root_2_exp = NAN, .root_num_exp = 1};
-
-
-    int test_counter = 0;
+    struct Unit_Test_Data testing_data_array[] =
+    {  // # x^2, x, 1, D,   x1,  x2,    root_num
+         {1, 0, 0, 0, NAN, NAN, NAN, INF_ROOTS},
+         {2, 0, 0, 3, NAN , INF_ROOTS, INF_ROOTS, UNEXISTING_ROOTS},
+         {3, -4, 3, 8, 137, -1.088, 1.388, 2},
+         {4, 1, 6, 9, 0, -3, NAN, 1},
+         {5, 1, 0, -16, 64, -4, 4, 2},
+         {6, 1.674, 673.5, -5, 453635.73, -402.337, 0.007, 2},
+         {7, 16, 128, -872.7, 72236.8, -12.399, 4.399, 2},
+         {8, 10, -57, -672, 30129, -5.829, 11.529, 2},
+         {9, 10, -57, 672, -23631, NAN, NAN, 0},
+         {10, 0, 5, -45.72, NAN, 9.144, NAN, 1}
+    };
 
     printf("result %lg means not existing root\n\n"         //unit tests
            "result %d means ifinity of roots\n\n", NAN, INF_ROOTS);
+    int test_counter = 0;
+
+    for(unsigned int array_index = 0; array_index < sizeof(testing_data_array) / sizeof(testing_data_array[0]); array_index++)
+    {
+        test_counter += Solving_Tests(testing_data_array[array_index]);
+        printf("\n");
+    }
 
 
-    test_counter += Solving_Tests(test_1); //все коэффициенты равны 0
-    printf("\n\n");
+    printf("%d out of %d tests done correct ", test_counter, sizeof(testing_data_array)/sizeof(testing_data_array[0]));
+}
 
-    test_counter += Solving_Tests(test_2); // коэффициенты при переменных равны 0
-    printf("\n\n");
+bool continue_or_finish()
+{
+    printf("Введи 1 для продолжения или 'q', чтобы закончить:\n\n");
+    return 1;
 
-    test_counter += Solving_Tests(test_3); //коэфф при x^2 отрицателен, остальные положительны
-    printf("\n\n");
-
-    test_counter += Solving_Tests(test_4);  //дискр == 0, 1 корень
-    printf("\n\n");
-
-    test_counter += Solving_Tests(test_5);  // коэфф x отсутствует, 2 корня
-    printf("\n\n");
-
-    test_counter += Solving_Tests(test_6); // дробные коэффициенты
-    printf("\n\n");
-
-    test_counter += Solving_Tests(test_7); //отрицательный и дробный свободный коэфф
-    printf("\n\n");
-
-    test_counter += Solving_Tests(test_8); //отрицательные коэфф x и свободный коэфф
-    printf("\n\n");
-
-    test_counter += Solving_Tests(test_9); //дискриминант меньше 0
-    printf("\n\n");
-
-    test_counter += Solving_Tests(test_10); // линейное уравнение
-    printf("\n\n");
+   /* while(getchar() != 'q' || getchar() != '1')
+        if(getchar() == 'q')
+        {
+            return 0;
+        }
+        else if(getchar() == '1')
+        {
+            return 1;
+        }
+        else
+        {
+         printf
+        } */
+}
 
 
-    printf("%d out of 10 tests done correct ", test_counter);
+/*void is_min(double *root_1, double *root_2)
+{
+    double roots_changer = *root_1;
+    if(*root_1 > *root_2)
+    {
+        my_swap(*root_1, *root_2);
+    }
+}*/
+
+void my_swap(void* var_1, void* var_2, int size_)//побайтовый свап
+{
+    char *ptr_var_1 = (char*)var_1;
+    char *ptr_var_2 = (char*)var_2;
+
+    for(char swapper = 0; ; var_1++)
+    {
+
+    }
+
 }

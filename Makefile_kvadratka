@@ -1,0 +1,25 @@
+Compilator = g++ #our compilator is g++
+Extention = -c #pust' budet
+
+all: kvadratka.exe
+
+kvadratka.exe: square_solver.o sqr_solv_inp.o sqr_solv_outp.o sqr_solv_tests.o sqr_solv_processing.o 
+	$(Compilator) square_solver.o sqr_solv_inp.o sqr_solv_outp.o sqr_solv_tests.o sqr_solv_processing.o -o kvadratka.exe
+
+square_solver.o: square_solver.cpp
+	$(Compilator) $(Extention) square_solver.cpp
+
+sqr_solv_inp.o: sqr_solv_inp.cpp	
+	$(Compilator) $(Extention) sqr_solv_inp.cpp
+
+sqr_solv_outp.o: sqr_solv_outp.cpp	
+	$(Compilator) $(Extention) sqr_solv_outp.cpp
+
+sqr_solv_tests.o: sqr_solv_tests.cpp	
+	$(Compilator) $(Extention) sqr_solv_tests.cpp
+
+sqr_solv_processing.o: sqr_solv_processing.cpp	
+	$(Compilator) $(Extention) sqr_solv_processing.cpp
+
+clean:
+	rm -rf *.o kvadratka.exe

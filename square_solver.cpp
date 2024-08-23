@@ -1,6 +1,7 @@
 #include <TXLiB.h>
 #include <stdio.h>
 #include <math.h>
+#include <inttypes.h>
 
 
 #define EPSILON 0.001
@@ -69,6 +70,8 @@ int Solving_Tests(Unit_Test_Data test);
 void Unit_Tests();
 
 void is_min(double *root_1, double *root_2);
+
+void my_swap(void* var_1, void* var_2, int size);
 
 
 int main(void)
@@ -223,10 +226,8 @@ void result_print(const Equation_Attributes_Data equation_parts)
             break;
         }
     }
-    continue_or_finish();
 }
 
-//assert(0 && "Abx")
 
 void greetings()
 {
@@ -245,11 +246,6 @@ void lineal_equ_solver(const double free_coef, const double x_coef, double *root
 }
 
 
-//to do
-//структуры вход/выход в мейне и др.
-//завершение работы q
-
-
 double fix_root_minus_zero(double root)
 {
     return !is_zero(root) ?  0 : root;
@@ -257,6 +253,14 @@ double fix_root_minus_zero(double root)
 
 int read_nums(Equation_Coefficients_Data *coefficients)
 {
+    if(continue_or_finish())
+    {
+
+    }
+    else
+    {
+        break;
+    }
     int result = 0;
     result += for_input(&(coefficients->sqr_x_coef), result);
     result += for_input(&(coefficients->x_coef), result);
@@ -339,17 +343,17 @@ int Solving_Tests(Unit_Test_Data test)
 void Unit_Tests()
 {
     struct Unit_Test_Data testing_data_array[] =
-    {  // # x^2, x, 1, D,   x1,  x2,    root_num
-         {1, 0, 0, 0, NAN, NAN, NAN, INF_ROOTS},
-         {2, 0, 0, 3, NAN , INF_ROOTS, INF_ROOTS, UNEXISTING_ROOTS},
-         {3, -4, 3, 8, 137, -1.088, 1.388, 2},
-         {4, 1, 6, 9, 0, -3, NAN, 1},
-         {5, 1, 0, -16, 64, -4, 4, 2},
-         {6, 1.674, 673.5, -5, 453635.73, -402.337, 0.007, 2},
-         {7, 16, 128, -872.7, 72236.8, -12.399, 4.399, 2},
-         {8, 10, -57, -672, 30129, -5.829, 11.529, 2},
-         {9, 10, -57, 672, -23631, NAN, NAN, 0},
-         {10, 0, 5, -45.72, NAN, 9.144, NAN, 1}
+    {  //  #,    x^2,    x,  fr_co,         D,        x1,        x2,         root_num
+         { 1,     0,     0,      0,       NAN,       NAN,       NAN,        INF_ROOTS},
+         { 2,     0,     0,      3,       NAN, INF_ROOTS, INF_ROOTS, UNEXISTING_ROOTS},
+         { 3,    -4,     3,      8,       137,    -1.088,     1.388,                2},
+         { 4,     1,     6,      9,         0,        -3,       NAN,                1},
+         { 5,     1,     0,    -16,        64,        -4,         4,                2},
+         { 6, 1.674, 673.5,     -5, 453635.73,  -402.337,     0.007,                2},
+         { 7,    16,   128, -872.7,   72236.8, -  12.399,     4.399,                2},
+         { 8,    10,   -57,   -672,     30129,    -5.829,    11.529,                2},
+         { 9,    10,   -57,    672,    -23631,       NAN,       NAN,                0},
+         {10,     0,     5, -45.72,       NAN,     9.144,       NAN,                1}
     };
 
     printf("result %lg means not existing root\n\n"         //unit tests
@@ -369,41 +373,94 @@ void Unit_Tests()
 bool continue_or_finish()
 {
     printf("¬веди 1 дл€ продолжени€ или 'q', чтобы закончить:\n\n");
-    return 1;
 
-   /* while(getchar() != 'q' || getchar() != '1')
-        if(getchar() == 'q')
+    for(int tries = 6; char var_char = getchar(); tries--)
+    {
+        char var_char = getchar();
+        if(var_char == 'q')
         {
             return 0;
         }
-        else if(getchar() == '1')
+        else if(var_char == '1')
         {
             return 1;
         }
         else
         {
-         printf
-        } */
+         printf("ѕопробуй еще раз, осталось %d попыток", tries - 1);
+        }
+        if (tries == 1)
+            return 0;
+    }
 }
 
-
-/*void is_min(double *root_1, double *root_2)
+void is_min(double *root_1, double *root_2)
 {
-    double roots_changer = *root_1;
     if(*root_1 > *root_2)
     {
-        my_swap(*root_1, *root_2);
+        my_swap(root_1, root_2, sizeof(*root_1));
     }
-}*/
+}
 
-void my_swap(void* var_1, void* var_2, int size_)//побайтовый свап
+void my_swap(void* var_1, void* var_2, int size)//побайтовый свап
 {
-    char *ptr_var_1 = (char*)var_1;
-    char *ptr_var_2 = (char*)var_2;
+    int add_bytes = 0;
 
-    for(char swapper = 0; ; var_1++)
+    uint64_t *ptr_var_long_1 = (uint64_t*)var_1;
+    uint64_t *ptr_var_long_2 = (uint64_t*)var_2;
+    printf("start swapping: %p %p\n", ptr_var_long_1, ptr_var_long_2);
+
+    for(; size >= sizeof(uint64_t); ptr_var_long_1++, ptr_var_long_2++, size -= sizeof(uint64_t), add_bytes += sizeof(uint64_t))
     {
+        uint64_t imba = *ptr_var_long_1;
+        *ptr_var_long_1 = *ptr_var_long_2;
+        *ptr_var_long_2 = imba;
+        //printf("swap in long start: %p %p %d\n", ptr_var_long_1, ptr_var_long_2, size);
+    }
+    //printf("swap in long finish: %p %p\n\n", ptr_var_long_1 + add_bytes, ptr_var_long_2 + add_bytes);
 
+    uint32_t *ptr_var_int_1 = (uint32_t*)(var_1) + add_bytes;
+    uint32_t *ptr_var_int_2 = (uint32_t*)(var_2) + add_bytes;
+
+    if(size / sizeof(uint32_t) == 1)
+    {
+        uint32_t imba = *ptr_var_int_1;
+        *ptr_var_int_1 = *ptr_var_int_2;
+        *ptr_var_int_2 = imba;
+        size %= sizeof(uint32_t);
+        add_bytes += sizeof(uint32_t);
+        //printf("swap in int start: %p %p\n", ptr_var_int_1, ptr_var_int_2);
+        //printf("swap in int finish: %p %p\n\n", ptr_var_int_1 + add_bytes,
+               // ptr_var_int_2 + add_bytes);
     }
 
+    uint16_t *ptr_var_short_1 = (uint16_t*)(var_1) + add_bytes;
+    uint16_t *ptr_var_short_2 = (uint16_t*)(var_2) + add_bytes;
+
+    if(size / sizeof(uint16_t) == 1)
+    {
+        uint16_t imba = *ptr_var_short_1;
+        *ptr_var_short_1 = *ptr_var_short_2;
+        *ptr_var_short_2 = imba;
+        size %= sizeof(uint16_t);
+        add_bytes += sizeof(uint16_t);
+        //printf("swap in short start: %p %p\n", ptr_var_short_1, ptr_var_short_2);
+        //printf("swap in int finish: %p %p\n\n", ptr_var_short_1 + add_bytes,
+                //ptr_var_short_2 + add_bytes);
+    }
+
+    uint8_t *ptr_var_char_1 = (uint8_t*)var_1 + add_bytes;
+    uint8_t *ptr_var_char_2 = (uint8_t*)var_2 + add_bytes;
+
+    if(size / sizeof(uint8_t) == 1)
+    {
+        uint8_t imba = *ptr_var_char_1;
+        *ptr_var_char_1 = *ptr_var_char_2;
+        *ptr_var_char_2 = imba;
+        size %= sizeof(uint8_t);
+        add_bytes += sizeof(uint8_t);
+        //printf("swap in char start: %p %p\n", ptr_var_char_1, ptr_var_char_2);
+        //printf("swap in int finish: %p %p\n\n", ptr_var_char_1 + add_bytes,
+               // ptr_var_char_2 + add_bytes);
+    }
 }

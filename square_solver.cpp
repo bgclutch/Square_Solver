@@ -6,7 +6,7 @@ int main(void)
 
     //Unit_Tests();
 
-    greetings(); //вывод просьбы ввести коэффициенты
+    greetings(); //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
     struct Equation_Coefficients_Data coefficients =
         {
@@ -15,7 +15,7 @@ int main(void)
           .free_coef = NAN
         };
 
-    while (read_nums(&coefficients))  //считывание коэффициентов
+    while (read_nums(&coefficients))  //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     {
 
         struct Equation_Attributes_Data equation_parts =
@@ -28,9 +28,9 @@ int main(void)
 
         square_equ_solver(coefficients, &equation_parts);
 
-        equation_print(coefficients, equation_parts);   //вывод уравнения
+        equation_print(coefficients, equation_parts);   //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
-        result_print(equation_parts);                 //вывод ответа
+        result_print(equation_parts);                 //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     }
 
     printf("Thanks for work!\n\n");

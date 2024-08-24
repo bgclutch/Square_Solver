@@ -3,8 +3,9 @@
 
 #include <stdio.h>
 #include <math.h>
+#include "sqr_solv_processing.h"
+#include "sqr_solv_structs.h"
 
-void greetings();
 
 void equation_print(const Equation_Coefficients_Data coefficients,      //спп хэдер ифндеф везде документация структуры или вложенные структуры + функции поправить
                     const Equation_Attributes_Data equation_parts);

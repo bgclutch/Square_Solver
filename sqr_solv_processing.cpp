@@ -3,11 +3,7 @@
 #include <inttypes.h>
 #include <assert.h>
 
-#include "sqr_solv_inp.h"
-#include "sqr_solv_outp.h"
 #include "sqr_solv_processing.h"
-#include "sqr_solv_tests.h"
-
 
 bool is_zero(const double comparable)
 {

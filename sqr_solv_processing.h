@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 #include <math.h>
+#include "sqr_solv_inp.h"
+#include "sqr_solv_structs.h"
 
 bool is_zero(const double comparable);
 

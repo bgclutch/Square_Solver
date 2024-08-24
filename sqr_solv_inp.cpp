@@ -3,9 +3,6 @@
 #include <assert.h>
 
 #include "sqr_solv_inp.h"
-#include "sqr_solv_outp.h"
-#include "sqr_solv_processing.h"
-#include "sqr_solv_tests.h"
 
 int read_nums(Equation_Coefficients_Data *coefficients)
 {
@@ -53,6 +50,12 @@ int for_input(double *coef, int counter)
         }
     }
     return result;
+}
+
+void greetings()
+{
+    printf("\nInput 3 coefficients through 'space':\n\n"
+           "_x^2 + _x + _\n\n");
 }
 
 int continue_or_finish()

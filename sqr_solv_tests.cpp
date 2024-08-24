@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "sqr_solv_inp.h"
-#include "sqr_solv_outp.h"
-#include "sqr_solv_processing.h"
 #include "sqr_solv_tests.h"
 
 int Solving_Tests(Unit_Test_Data test)
@@ -61,7 +58,7 @@ void Unit_Tests()
     };
 
     printf("result %lg means not existing root\n\n"         //unit tests
-           "result %d means ifinity of roots\n\n", NAN, INF_ROOTS);
+           "result %d means infinity of roots\n\n", NAN, INF_ROOTS);
     int test_counter = 0;
 
     for(unsigned int array_index = 0; array_index < sizeof(testing_data_array) / sizeof(testing_data_array[0]); array_index++)

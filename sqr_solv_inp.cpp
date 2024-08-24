@@ -21,7 +21,6 @@ int read_nums(Equation_Coefficients_Data *coefficients)
     }
 }
 
-
 bool buff_clean_and_check()
 {
     bool is_error = 0;

@@ -59,6 +59,6 @@ void is_min(double *root_1, double *root_2);
  * @param *var_2 second swapping number memory address
  * @param size sizeof type of variable
  */
-void my_swap(void* var_1, void* var_2, int size);
+void my_swap(void* var_1, void* var_2, unsigned long size);
 
 #endif //SQR_SOLV_PROCESSING_H_

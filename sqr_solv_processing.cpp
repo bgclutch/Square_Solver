@@ -77,15 +77,15 @@ void square_equ_solver(const Equation_Coefficients_Data coefficients, Equation_A
 }
 
 
-void my_swap(void* var_1, void* var_2, int size)//побайтовый свап
+void my_swap(void* var_1, void* var_2, unsigned long size)//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 {
-    int add_bytes = 0;
+    unsigned long add_bytes = 0;
 
     uint64_t *ptr_var_long_1 = (uint64_t*)var_1;
     uint64_t *ptr_var_long_2 = (uint64_t*)var_2;
     //printf("start swapping: %p %p\n", ptr_var_long_1, ptr_var_long_2);
 
-    for(; size >= (signed int)sizeof(uint64_t); ptr_var_long_1++, ptr_var_long_2++, size -= sizeof(uint64_t), add_bytes += sizeof(uint64_t))
+    for(; size >= sizeof(uint64_t); ptr_var_long_1++, ptr_var_long_2++, size -= sizeof(uint64_t), add_bytes += sizeof(uint64_t))
     {
         uint64_t imba = *ptr_var_long_1;
         *ptr_var_long_1 = *ptr_var_long_2;

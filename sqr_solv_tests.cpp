@@ -68,5 +68,5 @@ void Unit_Tests()
     }
 
 
-    printf("%d out of %d tests done correct ", test_counter, sizeof(testing_data_array)/sizeof(testing_data_array[0]));
+    printf("%d out of %lu tests done correct ", test_counter, sizeof(testing_data_array)/sizeof(testing_data_array[0]));
 }

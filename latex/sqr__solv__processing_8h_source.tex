@@ -1,0 +1,28 @@
+\doxysection{sqr\+\_\+solv\+\_\+processing.\+h}
+\hypertarget{sqr__solv__processing_8h_source}{}\label{sqr__solv__processing_8h_source}\mbox{\hyperlink{sqr__solv__processing_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SQR\_SOLV\_PROCESSING\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SQR\_SOLV\_PROCESSING\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sqr__solv__inp_8h}{sqr\_solv\_inp.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sqr__solv__structs_8h}{sqr\_solv\_structs.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{sqr__solv__processing_8h_a368b831841cdeab13b5f563c666a1bcf}{is\_zero}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ comparable);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sqr__solv__processing_8h_a2cbe9c778d22e40af7ef50cbdac69fd8}{square\_equ\_solver}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_equation___coefficients___data}{Equation\_Coefficients\_Data}}\ coefficients,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_equation___attributes___data}{Equation\_Attributes\_Data}}\ *equation\_parts);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sqr__solv__processing_8h_a2e4adae841e2645d3fb12fd3a9915ee7}{lineal\_equ\_solver}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ free\_coef,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ x\_coef,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ *root\_1,\ \mbox{\hyperlink{struct_equation___attributes___data}{Equation\_Attributes\_Data}}\ *equation\_parts);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{sqr__solv__processing_8h_aadf2b27ec4b182543ac8f5603a301864}{fix\_root\_minus\_zero}}(\textcolor{keywordtype}{double}\ root);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sqr__solv__processing_8h_a6275700bd4665157006802ab5d6a14f6}{is\_min}}(\textcolor{keywordtype}{double}\ *root\_1,\ \textcolor{keywordtype}{double}\ *root\_2);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sqr__solv__processing_8h_a93c7fe932e681e6641af91175aa3e042}{my\_swap}}(\textcolor{keywordtype}{void}*\ var\_1,\ \textcolor{keywordtype}{void}*\ var\_2,\ \textcolor{keywordtype}{int}\ size);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//SQR\_SOLV\_PROCESSING\_H\_}}
+
+\end{DoxyCode}

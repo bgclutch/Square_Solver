@@ -1,0 +1,144 @@
+\doxysection{sqr\+\_\+solv\+\_\+processing.\+cpp File Reference}
+\hypertarget{sqr__solv__processing_8cpp}{}\label{sqr__solv__processing_8cpp}\index{sqr\_solv\_processing.cpp@{sqr\_solv\_processing.cpp}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include "{}sqr\+\_\+solv\+\_\+processing.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{sqr__solv__processing_8cpp_a368b831841cdeab13b5f563c666a1bcf}{is\+\_\+zero}} (const double comparable)
+\begin{DoxyCompactList}\small\item\em checking a digit to zero \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sqr__solv__processing_8cpp_a2e4adae841e2645d3fb12fd3a9915ee7}{lineal\+\_\+equ\+\_\+solver}} (const double free\+\_\+coef, const double x\+\_\+coef, double \texorpdfstring{$\ast$}{*}root\+\_\+1, \mbox{\hyperlink{struct_equation___attributes___data}{Equation\+\_\+\+Attributes\+\_\+\+Data}} \texorpdfstring{$\ast$}{*}equation\+\_\+parts)
+\begin{DoxyCompactList}\small\item\em lineal equation solving \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{sqr__solv__processing_8cpp_aadf2b27ec4b182543ac8f5603a301864}{fix\+\_\+root\+\_\+minus\+\_\+zero}} (double root)
+\begin{DoxyCompactList}\small\item\em fix -\/0 root \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sqr__solv__processing_8cpp_a6275700bd4665157006802ab5d6a14f6}{is\+\_\+min}} (double \texorpdfstring{$\ast$}{*}root\+\_\+1, double \texorpdfstring{$\ast$}{*}root\+\_\+2)
+\begin{DoxyCompactList}\small\item\em placing smaller root to root\+\_\+1 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sqr__solv__processing_8cpp_a2cbe9c778d22e40af7ef50cbdac69fd8}{square\+\_\+equ\+\_\+solver}} (const \mbox{\hyperlink{struct_equation___coefficients___data}{Equation\+\_\+\+Coefficients\+\_\+\+Data}} coefficients, \mbox{\hyperlink{struct_equation___attributes___data}{Equation\+\_\+\+Attributes\+\_\+\+Data}} \texorpdfstring{$\ast$}{*}equation\+\_\+parts)
+\begin{DoxyCompactList}\small\item\em square equation solving \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sqr__solv__processing_8cpp_a93c7fe932e681e6641af91175aa3e042}{my\+\_\+swap}} (void \texorpdfstring{$\ast$}{*}var\+\_\+1, void \texorpdfstring{$\ast$}{*}var\+\_\+2, int size)
+\begin{DoxyCompactList}\small\item\em swapping digits by byte blocks \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sqr__solv__processing_8cpp_aadf2b27ec4b182543ac8f5603a301864}\index{sqr\_solv\_processing.cpp@{sqr\_solv\_processing.cpp}!fix\_root\_minus\_zero@{fix\_root\_minus\_zero}}
+\index{fix\_root\_minus\_zero@{fix\_root\_minus\_zero}!sqr\_solv\_processing.cpp@{sqr\_solv\_processing.cpp}}
+\doxysubsubsection{\texorpdfstring{fix\_root\_minus\_zero()}{fix\_root\_minus\_zero()}}
+{\footnotesize\ttfamily \label{sqr__solv__processing_8cpp_aadf2b27ec4b182543ac8f5603a301864} 
+double fix\+\_\+root\+\_\+minus\+\_\+zero (\begin{DoxyParamCaption}\item[{double}]{root}{}\end{DoxyParamCaption})}
+
+
+
+fix -\/0 root 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & checking variable ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+fixed root 
+\end{DoxyReturn}
+\Hypertarget{sqr__solv__processing_8cpp_a6275700bd4665157006802ab5d6a14f6}\index{sqr\_solv\_processing.cpp@{sqr\_solv\_processing.cpp}!is\_min@{is\_min}}
+\index{is\_min@{is\_min}!sqr\_solv\_processing.cpp@{sqr\_solv\_processing.cpp}}
+\doxysubsubsection{\texorpdfstring{is\_min()}{is\_min()}}
+{\footnotesize\ttfamily \label{sqr__solv__processing_8cpp_a6275700bd4665157006802ab5d6a14f6} 
+void is\+\_\+min (\begin{DoxyParamCaption}\item[{double \texorpdfstring{$\ast$}{*}}]{root\+\_\+1}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{root\+\_\+2}{}\end{DoxyParamCaption})}
+
+
+
+placing smaller root to root\+\_\+1 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}root\+\_\+1} & address of root\+\_\+1 \\
+\hline
+{\em \texorpdfstring{$\ast$}{*}root\+\_\+2} & address of root\+\_\+2 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sqr__solv__processing_8cpp_a368b831841cdeab13b5f563c666a1bcf}\index{sqr\_solv\_processing.cpp@{sqr\_solv\_processing.cpp}!is\_zero@{is\_zero}}
+\index{is\_zero@{is\_zero}!sqr\_solv\_processing.cpp@{sqr\_solv\_processing.cpp}}
+\doxysubsubsection{\texorpdfstring{is\_zero()}{is\_zero()}}
+{\footnotesize\ttfamily \label{sqr__solv__processing_8cpp_a368b831841cdeab13b5f563c666a1bcf} 
+bool is\+\_\+zero (\begin{DoxyParamCaption}\item[{const double}]{comparable}{}\end{DoxyParamCaption})}
+
+
+
+checking a digit to zero 
+
+
+\begin{DoxyParams}{Parameters}
+{\em comparable} & comparable digit ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+comparing to 0.\+001 const 
+\end{DoxyWarning}
+\Hypertarget{sqr__solv__processing_8cpp_a2e4adae841e2645d3fb12fd3a9915ee7}\index{sqr\_solv\_processing.cpp@{sqr\_solv\_processing.cpp}!lineal\_equ\_solver@{lineal\_equ\_solver}}
+\index{lineal\_equ\_solver@{lineal\_equ\_solver}!sqr\_solv\_processing.cpp@{sqr\_solv\_processing.cpp}}
+\doxysubsubsection{\texorpdfstring{lineal\_equ\_solver()}{lineal\_equ\_solver()}}
+{\footnotesize\ttfamily \label{sqr__solv__processing_8cpp_a2e4adae841e2645d3fb12fd3a9915ee7} 
+void lineal\+\_\+equ\+\_\+solver (\begin{DoxyParamCaption}\item[{const double}]{free\+\_\+coef}{, }\item[{const double}]{x\+\_\+coef}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{root\+\_\+1}{, }\item[{\mbox{\hyperlink{struct_equation___attributes___data}{Equation\+\_\+\+Attributes\+\_\+\+Data}} \texorpdfstring{$\ast$}{*}}]{equation\+\_\+parts}{}\end{DoxyParamCaption})}
+
+
+
+lineal equation solving 
+
+
+\begin{DoxyParams}{Parameters}
+{\em free\+\_\+coef} & free coef of equation \\
+\hline
+{\em x\+\_\+coef} & coefficient belongs x \\
+\hline
+{\em \texorpdfstring{$\ast$}{*}root\+\_\+1} & memory address of root ~\newline
+ \\
+\hline
+{\em \texorpdfstring{$\ast$}{*}equation\+\_\+parts} & memory address of equation parts, part of \doxylink{struct_equation___attributes___data}{Equation\+\_\+\+Attributes\+\_\+\+Data} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sqr__solv__processing_8cpp_a93c7fe932e681e6641af91175aa3e042}\index{sqr\_solv\_processing.cpp@{sqr\_solv\_processing.cpp}!my\_swap@{my\_swap}}
+\index{my\_swap@{my\_swap}!sqr\_solv\_processing.cpp@{sqr\_solv\_processing.cpp}}
+\doxysubsubsection{\texorpdfstring{my\_swap()}{my\_swap()}}
+{\footnotesize\ttfamily \label{sqr__solv__processing_8cpp_a93c7fe932e681e6641af91175aa3e042} 
+void my\+\_\+swap (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{var\+\_\+1}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{var\+\_\+2}{, }\item[{int}]{size}{}\end{DoxyParamCaption})}
+
+
+
+swapping digits by byte blocks 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}var\+\_\+1} & first swapping digit memory address \\
+\hline
+{\em \texorpdfstring{$\ast$}{*}var\+\_\+2} & second swapping digit memory address \\
+\hline
+{\em size} & sizeof type of variable \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sqr__solv__processing_8cpp_a2cbe9c778d22e40af7ef50cbdac69fd8}\index{sqr\_solv\_processing.cpp@{sqr\_solv\_processing.cpp}!square\_equ\_solver@{square\_equ\_solver}}
+\index{square\_equ\_solver@{square\_equ\_solver}!sqr\_solv\_processing.cpp@{sqr\_solv\_processing.cpp}}
+\doxysubsubsection{\texorpdfstring{square\_equ\_solver()}{square\_equ\_solver()}}
+{\footnotesize\ttfamily \label{sqr__solv__processing_8cpp_a2cbe9c778d22e40af7ef50cbdac69fd8} 
+void square\+\_\+equ\+\_\+solver (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_equation___coefficients___data}{Equation\+\_\+\+Coefficients\+\_\+\+Data}}}]{coefficients}{, }\item[{\mbox{\hyperlink{struct_equation___attributes___data}{Equation\+\_\+\+Attributes\+\_\+\+Data}} \texorpdfstring{$\ast$}{*}}]{equation\+\_\+parts}{}\end{DoxyParamCaption})}
+
+
+
+square equation solving 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coefficients} & equation coefficients, part of \doxylink{struct_equation___coefficients___data}{Equation\+\_\+\+Coefficients\+\_\+\+Data} ~\newline
+ \\
+\hline
+{\em \texorpdfstring{$\ast$}{*}equation\+\_\+parts} & memory address of equation parts, part of \doxylink{struct_equation___attributes___data}{Equation\+\_\+\+Attributes\+\_\+\+Data} \\
+\hline
+\end{DoxyParams}

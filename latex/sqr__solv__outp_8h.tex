@@ -1,0 +1,48 @@
+\doxysection{sqr\+\_\+solv\+\_\+outp.\+h File Reference}
+\hypertarget{sqr__solv__outp_8h}{}\label{sqr__solv__outp_8h}\index{sqr\_solv\_outp.h@{sqr\_solv\_outp.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include "{}sqr\+\_\+solv\+\_\+processing.\+h"{}}\newline
+{\ttfamily \#include "{}sqr\+\_\+solv\+\_\+structs.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{sqr__solv__outp_8h_ae90f667689e69e246e852bf45c1ecea1}{equation\+\_\+print}} (const \mbox{\hyperlink{struct_equation___coefficients___data}{Equation\+\_\+\+Coefficients\+\_\+\+Data}} coefficients, const \mbox{\hyperlink{struct_equation___attributes___data}{Equation\+\_\+\+Attributes\+\_\+\+Data}} equation\+\_\+parts)
+\begin{DoxyCompactList}\small\item\em equation printing \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sqr__solv__outp_8h_a9b128dd266e081e30073984f7735e6b0}{result\+\_\+print}} (\mbox{\hyperlink{struct_equation___attributes___data}{Equation\+\_\+\+Attributes\+\_\+\+Data}} equation\+\_\+parts)
+\begin{DoxyCompactList}\small\item\em equation roots printing \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sqr__solv__outp_8h_ae90f667689e69e246e852bf45c1ecea1}\index{sqr\_solv\_outp.h@{sqr\_solv\_outp.h}!equation\_print@{equation\_print}}
+\index{equation\_print@{equation\_print}!sqr\_solv\_outp.h@{sqr\_solv\_outp.h}}
+\doxysubsubsection{\texorpdfstring{equation\_print()}{equation\_print()}}
+{\footnotesize\ttfamily \label{sqr__solv__outp_8h_ae90f667689e69e246e852bf45c1ecea1} 
+void equation\+\_\+print (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_equation___coefficients___data}{Equation\+\_\+\+Coefficients\+\_\+\+Data}}}]{coefficients}{, }\item[{const \mbox{\hyperlink{struct_equation___attributes___data}{Equation\+\_\+\+Attributes\+\_\+\+Data}}}]{equation\+\_\+parts}{}\end{DoxyParamCaption})}
+
+
+
+equation printing 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coefficients} & equation coefficiens, part of \doxylink{struct_equation___coefficients___data}{Equation\+\_\+\+Coefficients\+\_\+\+Data} \\
+\hline
+{\em equation\+\_\+parts} & equation roots and discriminant, part of \doxylink{struct_equation___attributes___data}{Equation\+\_\+\+Attributes\+\_\+\+Data} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sqr__solv__outp_8h_a9b128dd266e081e30073984f7735e6b0}\index{sqr\_solv\_outp.h@{sqr\_solv\_outp.h}!result\_print@{result\_print}}
+\index{result\_print@{result\_print}!sqr\_solv\_outp.h@{sqr\_solv\_outp.h}}
+\doxysubsubsection{\texorpdfstring{result\_print()}{result\_print()}}
+{\footnotesize\ttfamily \label{sqr__solv__outp_8h_a9b128dd266e081e30073984f7735e6b0} 
+void result\+\_\+print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_equation___attributes___data}{Equation\+\_\+\+Attributes\+\_\+\+Data}}}]{equation\+\_\+parts}{}\end{DoxyParamCaption})}
+
+
+
+equation roots printing 
+
+
+\begin{DoxyParams}{Parameters}
+{\em equation\+\_\+parts} & equation\+\_\+parts equation roots and discriminant, part of \doxylink{struct_equation___attributes___data}{Equation\+\_\+\+Attributes\+\_\+\+Data} \\
+\hline
+\end{DoxyParams}

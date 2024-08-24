@@ -1,0 +1,128 @@
+\doxysection{sqr\+\_\+solv\+\_\+inp.\+h File Reference}
+\hypertarget{sqr__solv__inp_8h}{}\label{sqr__solv__inp_8h}\index{sqr\_solv\_inp.h@{sqr\_solv\_inp.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include "{}sqr\+\_\+solv\+\_\+structs.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{sqr__solv__inp_8h_a7559732bb43e6d58db71c6cf8999b4d5}{SQR\+\_\+\+SOLV\+\_\+\+INP\+\_\+H}}
+\item 
+\#define \mbox{\hyperlink{sqr__solv__inp_8h_a002b2f4894492820fe708b1b7e7c5e70}{EPSILON}}~0.\+001
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{sqr__solv__inp_8h_a824feae9a9014b6372c76258ae09c47b}{read\+\_\+nums}} (\mbox{\hyperlink{struct_equation___coefficients___data}{Equation\+\_\+\+Coefficients\+\_\+\+Data}} \texorpdfstring{$\ast$}{*}coefficients)
+\begin{DoxyCompactList}\small\item\em reading equations coefficients ~\newline
+ \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{sqr__solv__inp_8h_ab52d855da1d5805fa1073d120d06783d}{buff\+\_\+clean\+\_\+and\+\_\+check}} ()
+\begin{DoxyCompactList}\small\item\em returning buffer cleaning result \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sqr__solv__inp_8h_abe509190e6a04fd31f6314a441ee8a1c}{for\+\_\+input}} (double \texorpdfstring{$\ast$}{*}coef, int counter)
+\begin{DoxyCompactList}\small\item\em checking input \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sqr__solv__inp_8h_a6a5c27d3b3273f4730caf6231d79ac25}{greetings}} ()
+\begin{DoxyCompactList}\small\item\em greetings output \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sqr__solv__inp_8h_a530a59ef9f97bf8015bcf7aad5d0b999}{continue\+\_\+or\+\_\+finish}} ()
+\begin{DoxyCompactList}\small\item\em asking for continue or finish symbol \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{sqr__solv__inp_8h_a002b2f4894492820fe708b1b7e7c5e70}\index{sqr\_solv\_inp.h@{sqr\_solv\_inp.h}!EPSILON@{EPSILON}}
+\index{EPSILON@{EPSILON}!sqr\_solv\_inp.h@{sqr\_solv\_inp.h}}
+\doxysubsubsection{\texorpdfstring{EPSILON}{EPSILON}}
+{\footnotesize\ttfamily \label{sqr__solv__inp_8h_a002b2f4894492820fe708b1b7e7c5e70} 
+\#define EPSILON~0.\+001}
+
+\Hypertarget{sqr__solv__inp_8h_a7559732bb43e6d58db71c6cf8999b4d5}\index{sqr\_solv\_inp.h@{sqr\_solv\_inp.h}!SQR\_SOLV\_INP\_H@{SQR\_SOLV\_INP\_H}}
+\index{SQR\_SOLV\_INP\_H@{SQR\_SOLV\_INP\_H}!sqr\_solv\_inp.h@{sqr\_solv\_inp.h}}
+\doxysubsubsection{\texorpdfstring{SQR\_SOLV\_INP\_H}{SQR\_SOLV\_INP\_H}}
+{\footnotesize\ttfamily \label{sqr__solv__inp_8h_a7559732bb43e6d58db71c6cf8999b4d5} 
+\#define SQR\+\_\+\+SOLV\+\_\+\+INP\+\_\+H}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sqr__solv__inp_8h_ab52d855da1d5805fa1073d120d06783d}\index{sqr\_solv\_inp.h@{sqr\_solv\_inp.h}!buff\_clean\_and\_check@{buff\_clean\_and\_check}}
+\index{buff\_clean\_and\_check@{buff\_clean\_and\_check}!sqr\_solv\_inp.h@{sqr\_solv\_inp.h}}
+\doxysubsubsection{\texorpdfstring{buff\_clean\_and\_check()}{buff\_clean\_and\_check()}}
+{\footnotesize\ttfamily \label{sqr__solv__inp_8h_ab52d855da1d5805fa1073d120d06783d} 
+bool buff\+\_\+clean\+\_\+and\+\_\+check (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+returning buffer cleaning result 
+
+\textquotesingle{}0\textquotesingle{} code means cleaning operations
+
+\textquotesingle{}1\textquotesingle{} code means cleaning operations ~\newline
+
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\Hypertarget{sqr__solv__inp_8h_a530a59ef9f97bf8015bcf7aad5d0b999}\index{sqr\_solv\_inp.h@{sqr\_solv\_inp.h}!continue\_or\_finish@{continue\_or\_finish}}
+\index{continue\_or\_finish@{continue\_or\_finish}!sqr\_solv\_inp.h@{sqr\_solv\_inp.h}}
+\doxysubsubsection{\texorpdfstring{continue\_or\_finish()}{continue\_or\_finish()}}
+{\footnotesize\ttfamily \label{sqr__solv__inp_8h_a530a59ef9f97bf8015bcf7aad5d0b999} 
+int continue\+\_\+or\+\_\+finish (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+asking for continue or finish symbol 
+
+\begin{DoxyReturn}{Returns}
+digit-\/code of continue or finish ~\newline
+ 
+\end{DoxyReturn}
+\Hypertarget{sqr__solv__inp_8h_abe509190e6a04fd31f6314a441ee8a1c}\index{sqr\_solv\_inp.h@{sqr\_solv\_inp.h}!for\_input@{for\_input}}
+\index{for\_input@{for\_input}!sqr\_solv\_inp.h@{sqr\_solv\_inp.h}}
+\doxysubsubsection{\texorpdfstring{for\_input()}{for\_input()}}
+{\footnotesize\ttfamily \label{sqr__solv__inp_8h_abe509190e6a04fd31f6314a441ee8a1c} 
+int for\+\_\+input (\begin{DoxyParamCaption}\item[{double \texorpdfstring{$\ast$}{*}}]{coef}{, }\item[{int}]{counter}{}\end{DoxyParamCaption})}
+
+
+
+checking input 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}coef} & coefficient\textquotesingle{}s placement in memory \\
+\hline
+{\em counter} & number of input iteration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of right inputed coefficients 
+\end{DoxyReturn}
+\Hypertarget{sqr__solv__inp_8h_a6a5c27d3b3273f4730caf6231d79ac25}\index{sqr\_solv\_inp.h@{sqr\_solv\_inp.h}!greetings@{greetings}}
+\index{greetings@{greetings}!sqr\_solv\_inp.h@{sqr\_solv\_inp.h}}
+\doxysubsubsection{\texorpdfstring{greetings()}{greetings()}}
+{\footnotesize\ttfamily \label{sqr__solv__inp_8h_a6a5c27d3b3273f4730caf6231d79ac25} 
+void greetings (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+greetings output 
+
+\Hypertarget{sqr__solv__inp_8h_a824feae9a9014b6372c76258ae09c47b}\index{sqr\_solv\_inp.h@{sqr\_solv\_inp.h}!read\_nums@{read\_nums}}
+\index{read\_nums@{read\_nums}!sqr\_solv\_inp.h@{sqr\_solv\_inp.h}}
+\doxysubsubsection{\texorpdfstring{read\_nums()}{read\_nums()}}
+{\footnotesize\ttfamily \label{sqr__solv__inp_8h_a824feae9a9014b6372c76258ae09c47b} 
+int read\+\_\+nums (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_equation___coefficients___data}{Equation\+\_\+\+Coefficients\+\_\+\+Data}} \texorpdfstring{$\ast$}{*}}]{coefficients}{}\end{DoxyParamCaption})}
+
+
+
+reading equations coefficients ~\newline
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}coefficients} & address of equation coefficients from \doxylink{struct_equation___coefficients___data}{Equation\+\_\+\+Coefficients\+\_\+\+Data} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\textquotesingle{}3\textquotesingle{} for right input
+\end{DoxyReturn}
+\textquotesingle{}0\textquotesingle{} for stop program 

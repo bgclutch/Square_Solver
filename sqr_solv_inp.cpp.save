@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <math.h>
-//#include "sqr_solv_inp.h"
-#include "sqr_solv_headers.h"
+#include <assert.h>
 
+#include "sqr_solv_inp.h"
+/**
+
+*/
 int read_nums(Equation_Coefficients_Data *coefficients)
 {
     if(continue_or_finish())
@@ -51,10 +54,16 @@ int for_input(double *coef, int counter)
     return result;
 }
 
+void greetings()
+{
+    printf("\nInput 3 coefficients through 'space':\n\n"
+           "_x^2 + _x + _\n\n");
+}
+
 int continue_or_finish()
 {
     int checker = 3;
-    printf("Input '1' to continue of 'q' to finish:\n\n");
+    printf("Input '1' to start solving your equation or 'q' to finish:\n\n");
 
     while(checker != 1 && checker != 0)
     {

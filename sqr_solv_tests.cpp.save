@@ -1,11 +1,7 @@
 #include <stdio.h>
 #include <math.h>
-
-#include "sqr_solv_inp.h"
-#include "sqr_solv_outp.h"
-#include "sqr_solv_processing.h"
-#include "sqr_solv_tests.h"
-
+#include "sqr_solv_headers.h"
+//здесь надо вызывать вообще все заголовочные файлы
 int Solving_Tests(Unit_Test_Data test)
 {
     struct Equation_Coefficients_Data coefficients =
@@ -50,7 +46,7 @@ void Unit_Tests()
     {  //  #,    x^2,    x,  fr_co,         D,        x1,        x2,         root_num
          { 1,     0,     0,      0,       NAN,       NAN,       NAN,        INF_ROOTS},
          { 2,     0,     0,      3,       NAN, INF_ROOTS, INF_ROOTS, UNEXISTING_ROOTS},
-         { 3,    -4,     3,      8,       137,    -1.088,     1.838,                2},
+         { 3,    -4,     3,      8,       137,    -1.088,     1.388,                2},
          { 4,     1,     6,      9,         0,        -3,       NAN,                1},
          { 5,     1,     0,    -16,        64,        -4,         4,                2},
          { 6, 1.674, 673.5,     -5, 453635.73,  -402.337,     0.007,                2},

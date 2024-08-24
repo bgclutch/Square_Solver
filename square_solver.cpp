@@ -1,4 +1,10 @@
-#include "sqr_solv_headers.h"
+#include <stdio.h>
+#include <math.h>
+
+#include "sqr_solv_inp.h"
+#include "sqr_solv_outp.h"
+#include "sqr_solv_processing.h"
+#include "sqr_solv_tests.h"
 
 
 int main(void)
@@ -33,7 +39,7 @@ int main(void)
         result_print(equation_parts);                 //����� ������
     }
 
-    printf("Thanks for work!\n\n");
+    printf("\n\nThanks for work!\n\n");
     return 0;
 }
 

@@ -1,6 +1,13 @@
-#include "sqr_solv_headers.h"
+#include <stdio.h>
+#include <math.h>
 #include <inttypes.h>
 #include <assert.h>
+
+#include "sqr_solv_inp.h"
+#include "sqr_solv_outp.h"
+#include "sqr_solv_processing.h"
+#include "sqr_solv_tests.h"
+
 
 bool is_zero(const double comparable)
 {
@@ -80,7 +87,7 @@ void my_swap(void* var_1, void* var_2, int size)//побайтовый свап
 
     uint64_t *ptr_var_long_1 = (uint64_t*)var_1;
     uint64_t *ptr_var_long_2 = (uint64_t*)var_2;
-    printf("start swapping: %p %p\n", ptr_var_long_1, ptr_var_long_2);
+    //printf("start swapping: %p %p\n", ptr_var_long_1, ptr_var_long_2);
 
     for(; size >= (signed int)sizeof(uint64_t); ptr_var_long_1++, ptr_var_long_2++, size -= sizeof(uint64_t), add_bytes += sizeof(uint64_t))
     {

@@ -1,11 +1,16 @@
-#include "sqr_solv_headers.h"
+#include <stdio.h>
+#include <math.h>
 #include <assert.h>
+
+#include "sqr_solv_inp.h"
+#include "sqr_solv_outp.h"
+#include "sqr_solv_processing.h"
+#include "sqr_solv_tests.h"
 
 void greetings()
 {
-    printf("Input 3 coefficients through 'space':\n\n"
-           "_x^2 + _x + _\n\n"
-           "Or input 'q' to finish\n\n");
+    printf("\nInput 3 coefficients through 'space':\n\n"
+           "_x^2 + _x + _\n\n");
 }
 
 void equation_print(const Equation_Coefficients_Data coefficients, const Equation_Attributes_Data equation_parts) //switch

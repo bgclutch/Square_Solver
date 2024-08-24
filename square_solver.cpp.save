@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <math.h>
+#include "sqr_solv_headers.h"
+
+
+int main(void)
+{
+
+    //Unit_Tests();
+
+    greetings(); //����� ������� ������ ������������
+
+    struct Equation_Coefficients_Data coefficients =
+        {
+          .sqr_x_coef = NAN,
+          .x_coef = NAN,
+          .free_coef = NAN
+        };
+
+    while (read_nums(&coefficients))  //���������� �������������
+    {
+
+        struct Equation_Attributes_Data equation_parts =
+            {
+              .discr = NAN,
+              .root_1 = NAN,
+              .root_2 = NAN,
+              .root_number = UNEXISTING_ROOTS
+            };
+
+        square_equ_solver(coefficients, &equation_parts);
+
+        equation_print(coefficients, equation_parts);   //����� ���������
+
+        result_print(equation_parts);                 //����� ������
+    }
+
+    printf("\n\nThanks for work!\n\n");
+    return 0;
+}
+
+// D:\bvols\Documents\squre_solver\Square_Solver g++ square_solver.cpp sqr_solv_inp.cpp sqr_solv_outp.cpp sqr_solv_tests.cpp sqr_solv_processing.cpp

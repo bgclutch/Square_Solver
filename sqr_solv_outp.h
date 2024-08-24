@@ -9,7 +9,7 @@
 /**
  * @brief equation printing
  * 
- * @param coefficients equation coefficiens, part of Equation_Coefficients_Data 
+ * @param coefficients equation coefficients, part of Equation_Coefficients_Data 
  * @param equation_parts equation roots and discriminant, part of Equation_Attributes_Data 
  */
 void equation_print(const Equation_Coefficients_Data coefficients,      

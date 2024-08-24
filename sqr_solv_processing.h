@@ -7,12 +7,12 @@
 #include "sqr_solv_structs.h"
 
 /**
- * @brief checking a digit to zero
+ * @brief comparison of the number with zero
  * 
- * @param comparable comparable digit  
+ * @param comparable comparable number  
  * @return true 
  * @return false
- * @warning comparing to 0.001 const 
+ * @warning comparing to EPS const 
  */
 bool is_zero(const double comparable);
 
@@ -53,10 +53,10 @@ double fix_root_minus_zero(double root);
 void is_min(double *root_1, double *root_2);
 
 /**
- * @brief swapping digits by byte blocks
+ * @brief vectorized swap of numbers
  * 
- * @param *var_1 first swapping digit memory address 
- * @param *var_2 second swapping digit memory address
+ * @param *var_1 first swapping number memory address 
+ * @param *var_2 second swapping number memory address
  * @param size sizeof type of variable
  */
 void my_swap(void* var_1, void* var_2, int size);

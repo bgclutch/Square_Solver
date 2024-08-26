@@ -53,8 +53,9 @@ struct Equation_Attributes_Data
  */
 struct Console_Parsing
 {
-    int c_help; ///< counter help mode
-    int c_test; ///< counter test mode
+    const char* c_help; ///< counter help mode
+    const char* c_test; ///< counter test mode
+    const char* c_ver;  ///< version number 
 };
 
 #endif // SQR_SOLV_STRUCTS_H_

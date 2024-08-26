@@ -12,7 +12,7 @@ int read_nums(Equation_Coefficients_Data *coefficients)
         result += for_input(&(coefficients->sqr_x_coef), result);
         result += for_input(&(coefficients->x_coef), result);
         result += for_input(&(coefficients->free_coef), result);
-        printf(YELLOW_TEXT("\nBuffer cleaning result %d") "\n\n", buff_clean_and_check());
+        printf(YELLOW_TEXT("\nBuffer cleaning result %d\n\n"), buff_clean_and_check());
         return result;
     }
     else
@@ -30,7 +30,6 @@ bool buff_clean_and_check()
     }
     return is_error;
 }
-
 
 int for_input(double *coef, int counter)
 {

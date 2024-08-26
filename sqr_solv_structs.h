@@ -8,14 +8,17 @@
 #define BLUE    "\e[0;34m" ///< blue
 #define DEL_COL    "\e[0m" ///< reset color
 
-#define RED_TEXT    (...) RED __VA_ARGS__ DEL_COL
-#define GREEN_TEXT  (...) GREEN __VA_ARGS__ DEL_COL
-#define YELLOW_TEXT (...) YELLOW __VA_ARGS__ DEL_COL
-#define BLUE_TEXT   (...) BLUE __VA_ARGS__ DEL_COL
+#define RED_TEXT   (text)  ("%s %s %s", RED, text, DEL_COL)    ///< red text + reset color  
+#define GREEN_TEXT (text)  ("%s %s %s", GREEN, text, DEL_COL)  ///< green text + reset color
+#define YELLOW_TEXT(text)  ("%s %s %s", YELLOW, text, DEL_COL) ///< yellow text + reset color
+#define BLUE_TEXT  (text)  ("%s %s %s", BLUE, text, DEL_COL)   ///< blue text + reset color
 
 #define EPSILON_ZERO 0.001 ///< epsolon zero
 #define EPSILON_ONE 1.001  ///< epsilon one 
 
+/**
+ * @brief number of roots
+ */
 enum NumRoots
 {
     UNEXISTING_ROOTS = 0, ///< no roots
@@ -24,6 +27,9 @@ enum NumRoots
     INF_ROOTS        = 3, ///< infinity roots
 };
 
+/**
+ * @brief equation's coefficients
+ */
 struct Equation_Coefficients_Data
 {
     double sqr_x_coef; ///< coefficient belongs x^2
@@ -31,6 +37,9 @@ struct Equation_Coefficients_Data
     double free_coef;  ///< free coefficient 
 };
 
+/**
+ * @brief equation roots, discriminant and root number
+ */
 struct Equation_Attributes_Data
 {
     double discr;         ///< discriminant

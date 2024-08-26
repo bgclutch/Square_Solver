@@ -7,7 +7,12 @@
 
 bool is_zero(const double comparable)
 {
-    return (fabs(comparable) > EPSILON);
+    return (fabs(comparable) > EPSILON_ZERO);
+}
+
+bool is_abs_one(const double comparable)
+{
+    return (fabs(comparable) > EPSILON_ONE);
 }
 
 

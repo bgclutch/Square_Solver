@@ -2,11 +2,19 @@
 #ifndef SQR_SOLV_STRUCTS_H_
 #define SQR_SOLV_STRUCTS_H_
 
-#define red     "\e[0;31m" ///< red
-#define green   "\e[0;32m" ///< green
-#define yellow  "\e[0;33m" ///< yellow
-#define blue    "\e[0;34m" ///< blue
-#define del_col    "\e[0m" ///< reset color
+#define RED     "\e[0;31m" ///< red
+#define GREEN   "\e[0;32m" ///< green
+#define YELLOW  "\e[0;33m" ///< yellow
+#define BLUE    "\e[0;34m" ///< blue
+#define DEL_COL    "\e[0m" ///< reset color
+
+#define RED_TEXT    (...) RED __VA_ARGS__ DEL_COL
+#define GREEN_TEXT  (...) GREEN __VA_ARGS__ DEL_COL
+#define YELLOW_TEXT (...) YELLOW __VA_ARGS__ DEL_COL
+#define BLUE_TEXT   (...) BLUE __VA_ARGS__ DEL_COL
+
+#define EPSILON_ZERO 0.001 ///< epsolon zero
+#define EPSILON_ONE 1.001  ///< epsilon one 
 
 enum NumRoots
 {

@@ -7,12 +7,12 @@
 #include "sqr_solv_structs.h"
 
 /**
- * @brief comparison of the number with zero
+ * @brief comparison the number with zero
  * 
  * @param comparable comparable number  
  * @return true 
  * @return false
- * @warning comparing to EPS const 
+ * @warning comparing to EPSILON_ZERO const 
  */
 bool is_zero(const double comparable);
 
@@ -24,6 +24,15 @@ bool is_zero(const double comparable);
  */
 void square_equ_solver(const Equation_Coefficients_Data coefficients,
                        Equation_Attributes_Data *equation_parts);
+
+/**
+ * @brief comparison sqr_x_coefficient with abs(1)
+ *
+ * @return true
+ * @return false
+ * @warning comparing to EPSILON_ONE const 
+ */
+bool is_abs_one(const double comparable);
 
 /**
  * @brief lineal equation solving

@@ -7,8 +7,6 @@
 #include "sqr_solv_structs.h"
 
 
-#define EPSILON 0.001
-
 /**
  * @brief reading equations coefficients    
  * 
@@ -18,6 +16,7 @@
  * '0' for stop program
  */
 int read_nums(Equation_Coefficients_Data *coefficients);
+
 
 /**
  * @brief returning buffer cleaning result
@@ -31,6 +30,7 @@ int read_nums(Equation_Coefficients_Data *coefficients);
  */
 bool buff_clean_and_check();
 
+
 /**
  * @brief checking input 
  * 
@@ -40,11 +40,13 @@ bool buff_clean_and_check();
  */
 int for_input(double *coef, int counter);
 
+
 /**
  * @brief greetings output 
  * 
  */
 void greetings();
+
 
 /**
  * @brief asking for continue or finish symbol 

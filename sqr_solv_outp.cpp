@@ -4,7 +4,7 @@
 
 #include "sqr_solv_outp.h"
 
-void equation_print(const Equation_Coefficients_Data coefficients, const Equation_Attributes_Data equation_parts) //switch
+void equation_print(const Equation_Coefficients_Data coefficients, const Equation_Attributes_Data equation_parts) 
 {
     switch(equation_parts.root_number)
     {
@@ -35,6 +35,7 @@ void equation_print(const Equation_Coefficients_Data coefficients, const Equatio
         }
     }
 }
+
 
 void result_print(const Equation_Attributes_Data equation_parts)
 {
@@ -72,6 +73,7 @@ void result_print(const Equation_Attributes_Data equation_parts)
     }
 }
 
+
 void sqr_x_coef_is_abs_one_two_roots(const Equation_Coefficients_Data coefficients)
 {
     if(is_abs_one(coefficients.sqr_x_coef))
@@ -90,6 +92,7 @@ void sqr_x_coef_is_abs_one_two_roots(const Equation_Coefficients_Data coefficien
                 printf("\nNumber of roots in " BLUE_TEXT("'%lgx^2%+lgx%+lg'") " square equation = " GREEN_TEXT("2") "\n\n", coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
             }
 }
+
 
 void sqr_x_coef_is_abs_one_one_root(const Equation_Coefficients_Data coefficients)
 {
@@ -110,6 +113,7 @@ void sqr_x_coef_is_abs_one_one_root(const Equation_Coefficients_Data coefficient
             }
 }
 
+
 void sqr_x_coef_is_abs_one_zero_roots(const Equation_Coefficients_Data coefficients)
 {
     if(is_abs_one(coefficients.sqr_x_coef))
@@ -129,6 +133,7 @@ void sqr_x_coef_is_abs_one_zero_roots(const Equation_Coefficients_Data coefficie
             }
 }
 
+
 void sqr_x_coef_is_abs_one_inf_roots(const Equation_Coefficients_Data coefficients)
 {
     if(is_abs_one(coefficients.sqr_x_coef))
@@ -147,6 +152,7 @@ void sqr_x_coef_is_abs_one_inf_roots(const Equation_Coefficients_Data coefficien
                 printf("\nNumber of roots in " BLUE_TEXT("'%lgx^2%+lgx%+lg'") " square equation = " YELLOW_TEXT("infinity") "\n\n", coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
             }
 }
+
 
 void print_guide()
 {

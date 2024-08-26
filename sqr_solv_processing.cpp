@@ -10,15 +10,18 @@ bool is_zero(const double comparable)
     return (fabs(comparable) > EPSILON);
 }
 
+
 bool is_abs_one(const double comparable)
 {
     return (fabs(comparable) >= 1 && fabs(comparable) < EPSILON + 1);
 }
 
+
 void lineal_equ_solver(const double free_coef, const double x_coef, double *root_1, Equation_Attributes_Data *equation_parts)
 {
     assert(root_1 && "&root_1 is 0");
     assert(isnan(*root_1) && "root_1 is not NAN");
+
     *root_1 = -free_coef / x_coef;
     equation_parts->root_number = ONE_ROOT;
 }
@@ -87,16 +90,13 @@ void my_swap(void* var_1, void* var_2, unsigned long size)
 
     uint64_t *ptr_var_long_1 = (uint64_t*)var_1;
     uint64_t *ptr_var_long_2 = (uint64_t*)var_2;
-    //printf("start swapping: %p %p\n", ptr_var_long_1, ptr_var_long_2);
 
     for(; size >= sizeof(uint64_t); ptr_var_long_1++, ptr_var_long_2++, size -= sizeof(uint64_t), add_bytes += sizeof(uint64_t))
     {
         uint64_t imba = *ptr_var_long_1;
         *ptr_var_long_1 = *ptr_var_long_2;
         *ptr_var_long_2 = imba;
-        //printf("swap in long start: %p %p %d\n", ptr_var_long_1, ptr_var_long_2, size);
     }
-    //printf("swap in long finish: %p %p\n\n", ptr_var_long_1 + add_bytes, ptr_var_long_2 + add_bytes);
 
     uint32_t *ptr_var_int_1 = (uint32_t*)(var_1) + add_bytes;
     uint32_t *ptr_var_int_2 = (uint32_t*)(var_2) + add_bytes;
@@ -108,9 +108,6 @@ void my_swap(void* var_1, void* var_2, unsigned long size)
         *ptr_var_int_2 = imba;
         size %= sizeof(uint32_t);
         add_bytes += sizeof(uint32_t);
-        //printf("swap in int start: %p %p\n", ptr_var_int_1, ptr_var_int_2);
-        //printf("swap in int finish: %p %p\n\n", ptr_var_int_1 + add_bytes,
-               // ptr_var_int_2 + add_bytes);
     }
 
     uint16_t *ptr_var_short_1 = (uint16_t*)(var_1) + add_bytes;
@@ -123,9 +120,6 @@ void my_swap(void* var_1, void* var_2, unsigned long size)
         *ptr_var_short_2 = imba;
         size %= sizeof(uint16_t);
         add_bytes += sizeof(uint16_t);
-        //printf("swap in short start: %p %p\n", ptr_var_short_1, ptr_var_short_2);
-        //printf("swap in int finish: %p %p\n\n", ptr_var_short_1 + add_bytes,
-                //ptr_var_short_2 + add_bytes);
     }
 
     uint8_t *ptr_var_char_1 = (uint8_t*)var_1 + add_bytes;
@@ -138,9 +132,6 @@ void my_swap(void* var_1, void* var_2, unsigned long size)
         *ptr_var_char_2 = imba;
         size %= sizeof(uint8_t);
         add_bytes += sizeof(uint8_t);
-        //printf("swap in char start: %p %p\n", ptr_var_char_1, ptr_var_char_2);
-        //printf("swap in int finish: %p %p\n\n", ptr_var_char_1 + add_bytes,
-               // ptr_var_char_2 + add_bytes);
-    }
+    } // TODO formating 
 }
 

@@ -14,12 +14,12 @@ all: $(SOURCES) $(EXECUTABLE)         	#taget: requisits(dependency) \enter\tab 
 
 #LINKER
 $(EXECUTABLE): $(OBJECTS) 				#taget: requisits(dependency) \enter\tab shell commands
-	@$(CC) $(LDFLAGS) $(OBJECTS) -o $@ 
+	@$(CC) $(LDFLAGS) $^ -o $@ 
 #main target file(kvadratka) get files *.o to link and get main.exe(kvadratka)
 #@ - mute output                    $@ - compilation target name
 
-#COMPILATION
-.cpp.o: #rule how to turn *.cpp to *.o
+#PREPROCESSING + COMPILATION
+%.o: %.cpp #rule how to turn *.cpp to *.o
 # make *.o file from current *.c file with ded_flags
 	@$(CC) $(CFLAGS) $< -o $@
 # $< - first requisit $@ - compilation target name(EXECUTABLE)

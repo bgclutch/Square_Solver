@@ -16,6 +16,7 @@
  */
 bool is_zero(const double comparable);
 
+
 /**
  * @brief square equation solving
  * 
@@ -25,6 +26,7 @@ bool is_zero(const double comparable);
 void square_equ_solver(const Equation_Coefficients_Data coefficients,
                        Equation_Attributes_Data *equation_parts);
 
+
 /**
  * @brief comparison sqr_x_coefficient with abs(1)
  *
@@ -33,6 +35,7 @@ void square_equ_solver(const Equation_Coefficients_Data coefficients,
  * @warning comparing to EPSILON_ONE const 
  */
 bool is_abs_one(const double comparable);
+
 
 /**
  * @brief lineal equation solving
@@ -45,6 +48,7 @@ bool is_abs_one(const double comparable);
 void lineal_equ_solver(const double free_coef, const double x_coef,
                        double *root_1, Equation_Attributes_Data *equation_parts);
 
+
 /**
  * @brief fix -0 root
  * 
@@ -53,6 +57,7 @@ void lineal_equ_solver(const double free_coef, const double x_coef,
  */
 double fix_root_minus_zero(double root);
 
+
 /**
  * @brief placing smaller root to root_1
  * 
@@ -60,6 +65,7 @@ double fix_root_minus_zero(double root);
  * @param *root_2 address of root_2 
  */
 void is_min(double *root_1, double *root_2);
+
 
 /**
  * @brief vectorized swap of numbers

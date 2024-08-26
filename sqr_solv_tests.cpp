@@ -8,15 +8,15 @@ int Solving_Tests(Unit_Test_Data test)
     struct Equation_Coefficients_Data coefficients =
         {
           .sqr_x_coef = test.sqr_x_coef,
-          .x_coef = test.x_coef,
-          .free_coef = test.free_coef
+          .x_coef     = test.x_coef,
+          .free_coef  = test.free_coef
         };
 
     struct Equation_Attributes_Data equation_parts =
         {
-          .discr = NAN,
-          .root_1 = NAN,
-          .root_2 = NAN,
+          .discr       = NAN,
+          .root_1      = NAN,
+          .root_2      = NAN,
           .root_number = UNEXISTING_ROOTS
         };
 
@@ -55,11 +55,13 @@ void Unit_Tests()
          { 7,    16,   128, -872.7,   72236.8, -  12.399,     4.399,                2},
          { 8,    10,   -57,   -672,     30129,    -5.829,    11.529,                2},
          { 9,    10,   -57,    672,    -23631,       NAN,       NAN,                0},
-         {10,     0,     5, -45.72,       NAN,     9.144,       NAN,                1} //'0' instead of '1'
+         {10,     0,     5, -45.72,       NAN,     9.144,       NAN,                1} 
     };
 
-    printf(BLUE_TEXT("result ") RED_TEXT("%lg ") BLUE_TEXT("means ") YELLOW_TEXT("not existing root") "\n\n"    //unit tests
-           BLUE_TEXT("result ") RED_TEXT("%d ") BLUE_TEXT("means ") YELLOW_TEXT("infinity of roots") "\n\n", NAN, INF_ROOTS);
+    printf(BLUE_TEXT("result ") RED_TEXT("%lg ") BLUE_TEXT("means ") YELLOW_TEXT("not existing root") "\n\n" 
+           BLUE_TEXT("result ") RED_TEXT("%d ") BLUE_TEXT("means ") YELLOW_TEXT("infinity of roots") "\n\n",
+           NAN, INF_ROOTS);
+
     int test_counter = 0;
 
     for(unsigned int array_index = 0; array_index < sizeof(testing_data_array) / sizeof(testing_data_array[0]); array_index++)
@@ -67,7 +69,6 @@ void Unit_Tests()
         test_counter += Solving_Tests(testing_data_array[array_index]);
         printf("\n");
     }
-
 
     printf(BLUE_TEXT("%d ") "out of " GREEN_TEXT("%lu ") "tests " GREEN_TEXT("done correct"), test_counter, sizeof(testing_data_array)/sizeof(testing_data_array[0]));
 }

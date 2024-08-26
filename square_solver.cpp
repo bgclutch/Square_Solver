@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
         {
             .c_help = "-h",
             .c_test = "--test",
-            .c_ver = "--ver"
+            .c_ver  = "--ver"
         };
 
     if(argc > 1)
@@ -25,20 +25,17 @@ int main(int argc, char *argv[])
         {
             if(strcmp(variables.c_help, argv[i]) == 0)
             {
-                print_guide();
-                break; 
+                print_guide(); 
             }
-
             else if(strcmp(variables.c_test, argv[i]) == 0)
             {
                 Unit_Tests();
-                break;
             }
             else if(strcmp(variables.c_ver, argv[i]) == 0)
             {
                 printf("program version 1.1\n\n"
-                    "works good(maybe)\n\n");
-                    break;   
+                       "works good(maybe)\n\n"
+                       "hope you enjoy using it)\n\n");   
             }
         }
     }
@@ -47,8 +44,8 @@ int main(int argc, char *argv[])
         struct Equation_Coefficients_Data coefficients =
         {
             .sqr_x_coef = NAN,
-            .x_coef = NAN,
-            .free_coef = NAN
+            .x_coef     = NAN,
+            .free_coef  = NAN
         };
 
         while (read_nums(&coefficients))  
@@ -56,9 +53,9 @@ int main(int argc, char *argv[])
 
             struct Equation_Attributes_Data equation_parts =
                 {
-                    .discr = NAN,
-                    .root_1 = NAN,
-                    .root_2 = NAN,
+                    .discr       = NAN,
+                    .root_1      = NAN,
+                    .root_2      = NAN,
                     .root_number = UNEXISTING_ROOTS
                 };
 

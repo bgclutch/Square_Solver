@@ -76,8 +76,8 @@ int continue_or_finish()
         }
         else
         {
-         printf("Try again. " BLUE_TEXT("Infinity ") "tries left)(input '1' or 'q')\n\n");
-         checker = -1;
+            printf("Try again. " BLUE_TEXT("Infinity ") "tries left)(input '1' or 'q')\n\n");
+            checker = -1;
         }
     }
     return checker;

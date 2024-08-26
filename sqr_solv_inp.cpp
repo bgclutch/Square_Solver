@@ -12,7 +12,7 @@ int read_nums(Equation_Coefficients_Data *coefficients)
         result += for_input(&(coefficients->sqr_x_coef), result);
         result += for_input(&(coefficients->x_coef), result);
         result += for_input(&(coefficients->free_coef), result);
-        printf("\nBuffer cleaning result %d\n\n", buff_clean_and_check());
+        printf(yellow "\nBuffer cleaning result %d\n\n" del_col, buff_clean_and_check());
         return result;
     }
     else
@@ -39,12 +39,12 @@ int for_input(double *coef, int counter)
     {
         if(buff_clean_and_check())
         {
-            printf("Input %d coefficient again\n\n", ++counter);
+            printf(yellow "Input %d coefficient again\n\n" del_col, ++counter);
             result = 0;
         }
         else if(result != 1)
         {
-            printf("Input that coefficient again\n\n");
+            printf(yellow "Input that coefficient again\n\n" del_col);
             result = 0;
         }
     }
@@ -53,14 +53,14 @@ int for_input(double *coef, int counter)
 
 void greetings()
 {
-    printf("\nInput 3 coefficients through 'space':\n\n"
+    printf("\nInput " blue "3 " del_col"coefficients " yellow "through " blue "'space':\n\n" del_col
            "_x^2 + _x + _\n\n");
 }
 
 int continue_or_finish()
 {
     int checker = 3;
-    printf("Input '1' to start solving your equation or 'q' to finish:\n\n");
+    printf("Input " green "'1' " del_col "to start solving your equation or " red "'q' " del_col "to finish:\n\n");
 
     while(checker != 1 && checker != 0)
     {
@@ -76,7 +76,7 @@ int continue_or_finish()
         }
         else
         {
-         printf("Try again. Infinity tries left)\n\n");
+         printf("Try again. " blue "Infinity " del_col "tries left)\n\n");
          checker = -1;
         }
     }

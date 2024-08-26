@@ -10,22 +10,36 @@ void equation_print(const Equation_Coefficients_Data coefficients, const Equatio
     {
         case(TWO_ROOTS):
         {
-            printf("\nNumber of roots in '%lgx^2%+lgx%+lg' square equation = 2 \n\n", coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
+            if()
+            {
+
+
+            }
+            else if()
+            {
+
+
+            }
+            else
+            {
+
+            }
+            printf("\nNumber of roots in " blue "'%lgx^2%+lgx%+lg' " delcol "square equation = " green "2 \n\n" del_col, coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
             break;
         }
         case(ONE_ROOT):
         {
-            printf("\nNumber of roots in '%lgx^2%+lgx%+lg' square equation = 1 \n\n", coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
+            printf("\nNumber of roots in " blue "'%lgx^2%+lgx%+lg' " delcol "square equation = " green "1 \n\n" del_col, coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
             break;
         }
         case(INF_ROOTS):
         {
-            printf("\nNumber of roots in '%lgx^2%+lgx%+lg' square equation = infinity \n\n", coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
+            printf("\nNumber of roots in " blue "'%lgx^2%+lgx%+lg' " delcol "square equation = " yellow "infinity \n\n" del_col, coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
             break;
         }
         case(UNEXISTING_ROOTS):
         {
-            printf("\nNumber of roots in '%lgx^2%+lgx%+lg' square equation = 0 \n\n", coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
+            printf("\nNumber of roots in " blue "'%lgx^2%+lgx%+lg' " delcol "square equation = " yellow "0 \n\n" del_col, coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
             break;
         }
         default:
@@ -44,24 +58,24 @@ void result_print(const Equation_Attributes_Data equation_parts)
         {
             assert(!isnan(equation_parts.root_1) && "root_1 is NAN");
             assert(!isnan(equation_parts.root_2) && "root_2 is NAN");
-            printf("Equation roots: x_1 = %.3lg, x_2 = %.3lg\n\n", fix_root_minus_zero(equation_parts.root_1),
+            printf("Equation roots: " blue "x_1 = " green "%.3lg " blue ", x_2 = " green "%.3lg\n\n" del_col, fix_root_minus_zero(equation_parts.root_1),
                    fix_root_minus_zero(equation_parts.root_2));
             break;
         }
         case(ONE_ROOT):
         {
             assert(!isnan(equation_parts.root_1) && "root_1 is NAN");
-            printf("Equation root x = %.3lg\n\n", fix_root_minus_zero(equation_parts.root_1));
+            printf("Equation root " blue "x = " green "%.3lg\n\n" del_col, fix_root_minus_zero(equation_parts.root_1));
             break;
         }
         case(UNEXISTING_ROOTS):
         {
-            printf("No roots\n\n");
+            printf(blue "No roots\n\n" del_col);
             break;
         }
         case(INF_ROOTS):
         {
-            printf("x belong infinity\n\n");
+            printf(blue "x " del_col "belongs " yellow "infinity\n\n" del_col);
             break;
         }
         default:

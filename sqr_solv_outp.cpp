@@ -10,9 +10,9 @@ void equation_print(const Equation_Coefficients_Data coefficients, const Equatio
     {
         case(TWO_ROOTS):
         {
-            if(is_abs_one(equation_parts.sqr_x_coef))
+            if(is_abs_one(coefficients.sqr_x_coef))
             {
-                if(equation_parts.sqr_x_coef > 0)
+                if(coefficients.sqr_x_coef > 0)
                 {
                     printf("\nNumber of roots in " BLUE_TEXT("'x^2%+lgx%+lg'") "square equation = " GREEN_TEXT("2") "\n\n", coefficients.x_coef, coefficients.free_coef);      
                 }

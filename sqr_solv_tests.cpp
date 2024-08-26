@@ -25,10 +25,10 @@ int Solving_Tests(Unit_Test_Data test)
     if(test.root_num_exp != equation_parts.root_number || fabs(equation_parts.discr - test.discr_exp) > EPSILON || (equation_parts.root_1 - test.root_1_exp) > EPSILON ||
       (equation_parts.root_2 - test.root_2_exp) > EPSILON)
     {
-        printf(yellow "Calculation error in test " red "%d" blue ":\nwith sqr_x_coef = " green "%lg " blue 
-               "\nx_coef = " green "%lg " blue "\nfree_coef = " green "%lg " blue "\n\n" yellow "expected:" blue "\n"
-               "discriminant = " green "%lg " blue "\nroot number = " green "%d " blue "\nroot_1 = " green "%lg " blue "\nroot_2 = " green "%lg " yellow "\n\n"
-               "printed:\n" blue "discriminant = " red "%lg " blue "\nroot_number = "  red "%d " blue "\nroot_1 = " red "%lg " blue "\nroot_2 = " red "%lg" del_col "\n",
+        printf(YELLOW_TEXT("Calculation error in test ") RED_TEXT("%d") BLUE_TEXT(":\nwith sqr_x_coef = ") GREEN_TEXT("%lg ") 
+               BLUE_TEXT("\nx_coef = ") GREEN_TEXT("%lg ") BLUE_TEXT("\nfree_coef = ") GREEN_TEXT("%lg ") BLUE_TEXT ("\n\n") YELLOW_TEXT("expected:") "\n"
+               BLUE_TEXT("discriminant = ") GREEN_TEXT("%lg ") BLUE_TEXT("\nroot number = ") GREEN_TEXT("%d ") BLUE_TEXT("\nroot_1 = ") GREEN_TEXT("%lg ") BLUE_TEXT("\nroot_2 = ") GREEN_TEXT("%lg ") "\n\n"
+               YELLOW_TEXT("printed:\n") BLUE_TEXT("discriminant = ") RED_TEXT("%lg ") BLUE_TEXT("\nroot_number = ") RED_TEXT("%d ") BLUE_TEXT("\nroot_1 = ") RED_TEXT("%lg ") BLUE_TEXT("\nroot_2 = ") RED_TEXT("%lg") "\n",
                test.test_num, test.sqr_x_coef, test.x_coef, test.free_coef, test.discr_exp, test.root_num_exp,
                test.root_1_exp, test.root_2_exp,
                equation_parts.discr, equation_parts.root_number, equation_parts.root_1, equation_parts.root_2);
@@ -36,7 +36,7 @@ int Solving_Tests(Unit_Test_Data test)
     }
     else
     {
-        printf(blue "Test %d is " green "done" del_col "\n", test.test_num);
+        printf(BLUE_TEXT("Test %d is ") GREEN_TEXT("done") "\n", test.test_num);
         return 1;
     }
 }
@@ -58,8 +58,8 @@ void Unit_Tests()
          {10,     0,     5, -45.72,       NAN,     9.144,       NAN,                1} //'0' instead of '1'
     };
 
-    printf(blue "result " red "%lg " blue "means " del_col yellow "not existing root" del_col "\n\n"    //unit tests
-           blue "result " red "%d " blue "means " yellow "infinity of roots" del_col "\n\n", NAN, INF_ROOTS);
+    printf(BLUE_TEXT("result ") RED_TEXT("%lg ") BLUE_TEXT("means ") YELLOW_TEXT("not existing root") "\n\n"    //unit tests
+           BLUE_TEXT("result ") RED_TEXT("%d ") BLUE_TEXT("means ") YELLOW_TEXT("infinity of roots") "\n\n", NAN, INF_ROOTS);
     int test_counter = 0;
 
     for(unsigned int array_index = 0; array_index < sizeof(testing_data_array) / sizeof(testing_data_array[0]); array_index++)
@@ -69,5 +69,5 @@ void Unit_Tests()
     }
 
 
-    printf(blue "%d " del_col "out of " green "%lu " del_col "tests " green "done correct" del_col, test_counter, sizeof(testing_data_array)/sizeof(testing_data_array[0]));
+    printf(BLUE_TEXT("%d ") "out of " GREEN_TEXT("%lu ") "tests " GREEN_TEXT("done correct"), test_counter, sizeof(testing_data_array)/sizeof(testing_data_array[0]));
 }

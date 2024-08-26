@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <math.h>
 #include <assert.h>
+#include <string.h>
 
 #include "sqr_solv_inp.h"
+#include "sqr_solv_structs.h"
 
 int read_nums(Equation_Coefficients_Data *coefficients)
 {
@@ -52,7 +54,7 @@ int for_input(double *coef, int counter)
 
 void greetings()
 {
-    printf("\nInput " BLUE_TEXT("3 ") "coefficients " YELLOW_TEXT("through ") BLUE_TEXT("'space':\n\n") 
+    printf("\nInput " YELLOW_TEXT("3 ") "coefficients " YELLOW_TEXT("through ") BLUE_TEXT("'space':\n\n") 
            "_x^2 + _x + _\n\n");
 }
 

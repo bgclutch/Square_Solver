@@ -8,10 +8,10 @@
 #define BLUE    "\e[0;34m" ///< blue
 #define DEL_COL    "\e[0m" ///< reset color
 
-#define RED_TEXT   (text)  ("%s %s %s", RED, text, DEL_COL)    ///< red text + reset color  
-#define GREEN_TEXT (text)  ("%s %s %s", GREEN, text, DEL_COL)  ///< green text + reset color
-#define YELLOW_TEXT(text)  ("%s %s %s", YELLOW, text, DEL_COL) ///< yellow text + reset color
-#define BLUE_TEXT  (text)  ("%s %s %s", BLUE, text, DEL_COL)   ///< blue text + reset color
+#define RED_TEXT(text)  RED text DEL_COL    ///< red text + reset color  
+#define GREEN_TEXT(text)  GREEN text DEL_COL  ///< green text + reset color
+#define YELLOW_TEXT(text)  YELLOW text DEL_COL ///< yellow text + reset color
+#define BLUE_TEXT(text)  BLUE text DEL_COL   ///< blue text + reset color
 
 #define EPSILON_ZERO 0.001 ///< epsolon zero
 #define EPSILON_ONE 1.001  ///< epsilon one 

@@ -25,5 +25,5 @@ $(EXECUTABLE): $(OBJECTS) 				#taget: requisits(dependency) \enter\tab shell com
 # $< - first requisit $@ - compilation target name(EXECUTABLE)
 clean:
 	rm -rf *.o $(EXECUTABLE) 
-# here rm -rf remove directorie *.o in EXECUTABLE(kvadratka) and content in them and ignore non-existing files
+# here rm -rf remove directories *.o in EXECUTABLE(kvadratka) and content in them and ignore non-existing files
 #equals to rm -r -f

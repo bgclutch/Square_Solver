@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 {
     printf("Hello, I'm square solver!\n\n"
            "input '-h' for instructions\n\n"
-           " input '--ver' for version\n\n"); //'--test' for mode
+           "input '--ver' for version\n\n"); //'--test' for mode
 
     struct Console_Parsing variables = 
         {

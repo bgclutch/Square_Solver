@@ -151,7 +151,8 @@ void sqr_x_coef_is_abs_one_inf_roots(const Equation_Coefficients_Data coefficien
 void print_guide()
 {
     printf("Hello! There's a Square Solver guide."
-           "Input 3 coefficient of square equation.\n\nIf you want to solve lineal equation input zero ('0') first.\n\n"
+           "Input 3 coefficient of square equation.\n\n"
+           "If you want to solve lineal equation input zero ('0') first.\n\n"
            "If you input non-numbers, program will not working, try it)\n\n"
            "Good luck!\n\n");
 }

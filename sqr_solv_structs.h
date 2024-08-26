@@ -48,5 +48,14 @@ struct Equation_Attributes_Data
     NumRoots root_number; ///< number of roots
 };
 
+/**
+ * @brief console parcing units, result containers
+ */
+struct Console_Parsing
+{
+    int c_help; ///< counter help mode
+    int c_test; ///< counter test mode
+};
+
 #endif // SQR_SOLV_STRUCTS_H_
 

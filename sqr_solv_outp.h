@@ -41,4 +41,9 @@ void sqr_x_coef_is_abs_one_inf_roots(const Equation_Coefficients_Data coefficien
  */
 void sqr_x_coef_is_abs_one_zero_roots(const Equation_Coefficients_Data coefficients);
 
+/**
+ * @brief print how square solver works
+ */
+void print_guide();
+
 #endif //SQR_SOLV_OUTP_H_

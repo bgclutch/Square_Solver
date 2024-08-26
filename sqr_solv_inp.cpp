@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <math.h>
 #include <assert.h>
-#include <string.h>
 
 #include "sqr_solv_inp.h"
 #include "sqr_solv_structs.h"
@@ -77,7 +76,7 @@ int continue_or_finish()
         }
         else
         {
-         printf("Try again. " BLUE_TEXT("Infinity ") "tries left)\n\n");
+         printf("Try again. " BLUE_TEXT("Infinity ") "tries left)(input '1' or 'q')\n\n");
          checker = -1;
         }
     }

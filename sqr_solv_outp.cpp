@@ -147,3 +147,11 @@ void sqr_x_coef_is_abs_one_inf_roots(const Equation_Coefficients_Data coefficien
                 printf("\nNumber of roots in " BLUE_TEXT("'%lgx^2%+lgx%+lg'") " square equation = " YELLOW_TEXT("infinity") "\n\n", coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
             }
 }
+
+void print_guide()
+{
+    printf("Hello! There's a Square Solver guide."
+           "Input 3 coefficient of square equation.\n\n If you want to solve lineal equation input zero ('0') first.\n\n"
+           "If you input non-numbers, program will not working, try it)\n\n"
+           "Good luck!\n\n");
+}

@@ -7,12 +7,12 @@
 
 bool is_zero(const double comparable)
 {
-    return (fabs(comparable) > EPSILON_ZERO);
+    return (fabs(comparable) > EPSILON);
 }
 
 bool is_abs_one(const double comparable)
 {
-    return (fabs(comparable) < EPSILON_ONE && is_zero(comparable));
+    return (fabs(comparable) >= 1 && fabs(comparable) < EPSILON + 1);
 }
 
 void lineal_equ_solver(const double free_coef, const double x_coef, double *root_1, Equation_Attributes_Data *equation_parts)
@@ -81,7 +81,7 @@ void square_equ_solver(const Equation_Coefficients_Data coefficients, Equation_A
 }
 
 
-void my_swap(void* var_1, void* var_2, unsigned long size)//���������� ����
+void my_swap(void* var_1, void* var_2, unsigned long size)
 {
     unsigned long add_bytes = 0;
 

@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
             .c_ver = "--ver"
         };
 
-    if(argc >= 1)
+    if(argc > 1)
     {
         for(int i = 0; i < argc; i++)
         {
@@ -42,33 +42,33 @@ int main(int argc, char *argv[])
             }
         }
     }
-    else
+    else if(argc == 1)
     {    
-            struct Equation_Coefficients_Data coefficients =
-            {
-                .sqr_x_coef = NAN,
-                .x_coef = NAN,
-                .free_coef = NAN
-            };
+        struct Equation_Coefficients_Data coefficients =
+        {
+            .sqr_x_coef = NAN,
+            .x_coef = NAN,
+            .free_coef = NAN
+        };
 
-            while (read_nums(&coefficients))  
-            {
+        while (read_nums(&coefficients))  
+        {
 
-                struct Equation_Attributes_Data equation_parts =
-                    {
-                        .discr = NAN,
-                        .root_1 = NAN,
-                        .root_2 = NAN,
-                        .root_number = UNEXISTING_ROOTS
-                    };
+            struct Equation_Attributes_Data equation_parts =
+                {
+                    .discr = NAN,
+                    .root_1 = NAN,
+                    .root_2 = NAN,
+                    .root_number = UNEXISTING_ROOTS
+                };
 
-                square_equ_solver(coefficients, &equation_parts);
+            square_equ_solver(coefficients, &equation_parts);
 
-                equation_print(coefficients, equation_parts);   
+            equation_print(coefficients, equation_parts);   
 
-                result_print(equation_parts);                 
-            }
+            result_print(equation_parts);                 
+        }
     }
-    printf("\n\nThanks for work!\n\n");
+    printf("\nThanks for work!\n\n");
     return 0;
 }

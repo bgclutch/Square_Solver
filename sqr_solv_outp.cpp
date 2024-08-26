@@ -10,36 +10,22 @@ void equation_print(const Equation_Coefficients_Data coefficients, const Equatio
     {
         case(TWO_ROOTS):
         {
-            if(is_abs_one(coefficients.sqr_x_coef))
-            {
-                if(coefficients.sqr_x_coef > 0)
-                {
-                    printf("\nNumber of roots in " BLUE_TEXT("'x^2%+lgx%+lg'") "square equation = " GREEN_TEXT("2") "\n\n", coefficients.x_coef, coefficients.free_coef);      
-                }
-                else
-                {
-                    printf("\nNumber of roots in " BLUE_TEXT("'-x^2%+lgx%+lg'") " square equation = " GREEN_TEXT("2") "\n\n", coefficients.x_coef, coefficients.free_coef);
-                }
-            }
-            else
-            {
-                printf("\nNumber of roots in " BLUE_TEXT("'%lgx^2%+lgx%+lg'") " square equation = " GREEN_TEXT("2") "\n\n", coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
-            }
+            sqr_x_coef_is_abs_one_two_roots(coefficients);
             break;
         }
         case(ONE_ROOT):
         {
-            printf("\nNumber of roots in " BLUE_TEXT("'%lgx^2%+lgx%+lg'") " square equation = " GREEN_TEXT("1") "\n\n", coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
+            sqr_x_coef_is_abs_one_one_root(coefficients);
             break;
         }
         case(INF_ROOTS):
         {
-            printf("\nNumber of roots in " BLUE_TEXT("'%lgx^2%+lgx%+lg'") " square equation = " YELLOW_TEXT("infinity") "\n\n", coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
+            sqr_x_coef_is_abs_one_inf_roots(coefficients);
             break;
         }
         case(UNEXISTING_ROOTS):
         {
-            printf("\nNumber of roots in " BLUE_TEXT("'%lgx^2%+lgx%+lg'") " square equation = " YELLOW_TEXT ("0")"\n\n", coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
+            sqr_x_coef_is_abs_one_zero_roots(coefficients);
             break;
         }
         default:
@@ -84,4 +70,80 @@ void result_print(const Equation_Attributes_Data equation_parts)
             break;
         }
     }
+}
+
+void sqr_x_coef_is_abs_one_two_roots(const Equation_Coefficients_Data coefficients)
+{
+    if(is_abs_one(coefficients.sqr_x_coef))
+            {
+                if(coefficients.sqr_x_coef > 0)
+                {
+                    printf("\nNumber of roots in " BLUE_TEXT("'x^2%+lgx%+lg'") "square equation = " GREEN_TEXT("2") "\n\n", coefficients.x_coef, coefficients.free_coef);      
+                }
+                else
+                {
+                    printf("\nNumber of roots in " BLUE_TEXT("'-x^2%+lgx%+lg'") " square equation = " GREEN_TEXT("2") "\n\n", coefficients.x_coef, coefficients.free_coef);
+                }
+            }
+            else
+            {
+                printf("\nNumber of roots in " BLUE_TEXT("'%lgx^2%+lgx%+lg'") " square equation = " GREEN_TEXT("2") "\n\n", coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
+            }
+}
+
+void sqr_x_coef_is_abs_one_one_root(const Equation_Coefficients_Data coefficients)
+{
+    if(is_abs_one(coefficients.sqr_x_coef))
+            {
+                if(coefficients.sqr_x_coef > 0)
+                {
+                    printf("\nNumber of roots in " BLUE_TEXT("'x^2%+lgx%+lg'") "square equation = " GREEN_TEXT("1") "\n\n", coefficients.x_coef, coefficients.free_coef);      
+                }
+                else
+                {
+                    printf("\nNumber of roots in " BLUE_TEXT("'-x^2%+lgx%+lg'") " square equation = " GREEN_TEXT("1") "\n\n", coefficients.x_coef, coefficients.free_coef);
+                }
+            }
+            else
+            {
+                printf("\nNumber of roots in " BLUE_TEXT("'%lgx^2%+lgx%+lg'") " square equation = " GREEN_TEXT("1") "\n\n", coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
+            }
+}
+
+void sqr_x_coef_is_abs_one_zero_roots(const Equation_Coefficients_Data coefficients)
+{
+    if(is_abs_one(coefficients.sqr_x_coef))
+            {
+                if(coefficients.sqr_x_coef > 0)
+                {
+                    printf("\nNumber of roots in " BLUE_TEXT("'x^2%+lgx%+lg'") "square equation = " YELLOW_TEXT("0") "\n\n", coefficients.x_coef, coefficients.free_coef);      
+                }
+                else
+                {
+                    printf("\nNumber of roots in " BLUE_TEXT("'-x^2%+lgx%+lg'") " square equation = " YELLOW_TEXT("0") "\n\n", coefficients.x_coef, coefficients.free_coef);
+                }
+            }
+            else
+            {
+                printf("\nNumber of roots in " BLUE_TEXT("'%lgx^2%+lgx%+lg'") " square equation = " YELLOW_TEXT("0") "\n\n", coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
+            }
+}
+
+void sqr_x_coef_is_abs_one_inf_roots(const Equation_Coefficients_Data coefficients)
+{
+    if(is_abs_one(coefficients.sqr_x_coef))
+            {
+                if(coefficients.sqr_x_coef > 0)
+                {
+                    printf("\nNumber of roots in " BLUE_TEXT("'x^2%+lgx%+lg'") "square equation = " YELLOW_TEXT("infinity") "\n\n", coefficients.x_coef, coefficients.free_coef);      
+                }
+                else
+                {
+                    printf("\nNumber of roots in " BLUE_TEXT("'-x^2%+lgx%+lg'") " square equation = " YELLOW_TEXT("infinity") "\n\n", coefficients.x_coef, coefficients.free_coef);
+                }
+            }
+            else
+            {
+                printf("\nNumber of roots in " BLUE_TEXT("'%lgx^2%+lgx%+lg'") " square equation = " YELLOW_TEXT("infinity") "\n\n", coefficients.sqr_x_coef, coefficients.x_coef, coefficients.free_coef);
+            }
 }

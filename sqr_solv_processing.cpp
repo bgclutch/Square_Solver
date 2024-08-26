@@ -12,9 +12,8 @@ bool is_zero(const double comparable)
 
 bool is_abs_one(const double comparable)
 {
-    return (fabs(comparable) > EPSILON_ONE);
+    return (fabs(comparable) < EPSILON_ONE && is_zero(comparable));
 }
-
 
 void lineal_equ_solver(const double free_coef, const double x_coef, double *root_1, Equation_Attributes_Data *equation_parts)
 {
